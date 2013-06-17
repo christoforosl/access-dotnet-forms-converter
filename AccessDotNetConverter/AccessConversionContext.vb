@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 ''' </summary>
 Public Class AccessConversionContext
 
-    Public Const DEFAULT_CONFIG_FILE As String = ".\AccessToDotNetControlMap.xml"
+    Public Const DEFAULT_CONFIG_FILE As String = ".\sampleProject.xml"
 
     Private _ProjectName As String
 
