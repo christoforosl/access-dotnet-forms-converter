@@ -339,6 +339,7 @@ Public Class AccessToDotNetControl
 
         Return Me.acControlType <> acControlType.acLabel AndAlso _
                 Me.acControlType <> acControlType.acLine AndAlso _
+                Me.acControlType <> acControlType.acImage AndAlso _
                     Me.acControlType <> acControlType.acRectangle AndAlso _
                     Me.acControlType <> acControlType.acPage AndAlso _
                     Me.acControlType <> acControlType.acOptionGroup
@@ -349,6 +350,7 @@ Public Class AccessToDotNetControl
         Return Me.acControlType <> acControlType.acCheckBox AndAlso _
                 Me.acControlType <> acControlType.acLine AndAlso _
                     Me.acControlType <> acControlType.acRectangle AndAlso _
+                     Me.acControlType <> acControlType.acImage AndAlso _
                     Me.acControlType <> acControlType.acOptionGroup AndAlso _
                     Me.acControlType <> acControlType.acPage
 
