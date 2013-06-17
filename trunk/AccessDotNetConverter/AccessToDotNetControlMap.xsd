@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AccessToDotNetConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="controlmaps">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="controlmap">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element name="rootControl" type="xs:string" default="Me">
+
+                      <xs:annotation>
+                        <xs:documentation>
+                          Usually this will be the String "Me."  This value is used by the conversion system
+                          at runtime to generated the code that adds the generated controls to the form container.
+                          Useful when you specify a custom form as your base form, and that form has a panel control 
+                          which should receive all controls 
+                        </xs:documentation>
+                      </xs:annotation>
+                                       
+                    </xs:element>
+                    
+                  </xs:sequence>
+                  <xs:attribute name="accessType" type="xs:string" use="required" />
+                  <xs:attribute name="dotnetType" type="xs:string" use="required" />
+                  <xs:attribute name="handler" type="xs:string" use="required">
+                    <xs:annotation>
+                      <xs:documentation>
+                        A class that inherits from AccessDotNetConverter.AccessToDotNetForm
+                        It handles the conversion from MS Access to .NET
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  
+                  <xs:attribute name="nameMatch" type="xs:string" use="optional">
+                    <xs:annotation>
+                      <xs:documentation>
+                        For form accessType, you can set either a hardcoded name, or a regular expression.
+                        If the name, or regular expression matches the name of the MS Access form being converted,
+                        then the handler class applies.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="fileExtension" type="xs:string" use="required" />
+      <xs:attribute name="sourceAccessDatabase" type="xs:string" use="required" />
+      <xs:attribute name="defaultBaseForm" type="xs:string" use="optional" default="System.Windows.Forms.Form" />
+      <xs:attribute name="namingHandler" type="xs:string" use="optional" default="AccessDotNetConverter.DefaultFormNameHandler" />
+      <xs:attribute name="defaultBaseFormTemplate" type="xs:string" use="required" />
+      <xs:attribute name="targetDotNetProjectPath" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

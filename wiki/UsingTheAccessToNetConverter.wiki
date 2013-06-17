@@ -1,0 +1,25 @@
+= Using The Access To .Net Forms Converter =
+
+Steps to convert an Access Project (ADP) or database (MDB)
+
+ # Download AccessDotNetConverter zip file, unzip it in a folder, OR checkout project and open it in .net 2010 and Compile it.
+ # Make A backup Copy of the MDB/ADP of your access database
+ # Create the [ConfigurationFile Configuration File]
+ # Run the AccessDotNetConverter.EXE, choose the configuration file and click "Convert Forms"
+
+== Running the program ==
+
+https://msaccess-subversion-control.googlecode.com/svn/wiki/ConverterUI.png
+ 
+ # The open configuration file of the project.  Click the "..." next to the field to select and load another 
+ # The root path to the .Net project that will receive converted forms
+ # The source MS Access database
+ # List of form names in the source MS Access database. 
+ # Button to convert selected forms
+ # System Log
+
+== Running from the command line ==
+Syntax of Command line:
+
+ # <code>AccessDotNetConverter -form [formname] -configFile [configfile]</code> Loads the config file specified in "configFile" parameter, and converts form name specified in parameter - form.
+ # <code>AccessDotNetConverter -form [formname] -sourceAccessDatabase [path to ms access database]</code> Converts form name specified in parameter "form" from the access database specified in the "sourceAccessDatabase" parameter. The configuration file used is the [https://code.google.com/p/msaccess-subversion-control/source/browse/AccessSVNTool/trunk/AccessDotNetConverter/AccessToDotNetControlMap.xml default configuration file] of the application
