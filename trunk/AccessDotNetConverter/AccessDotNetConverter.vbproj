@@ -224,7 +224,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AccessToDotNetControlMap.xml">
+    <Content Include="sampleProject.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>

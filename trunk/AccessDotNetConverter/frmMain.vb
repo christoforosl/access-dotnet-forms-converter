@@ -26,6 +26,7 @@ Public Class frmMain
     Private Sub tsNewProject_click(sender As System.Object, e As System.EventArgs) Handles tsNewProject.Click
 
         ofSelectFile.Filter = "XML Project File|*.xml|All Files|*.*"
+        sfdSaveConfig.Title = "Select Project File Name"
         sfdSaveConfig.AddExtension = True
         sfdSaveConfig.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
         sfdSaveConfig.DefaultExt = ".xml"
@@ -37,7 +38,9 @@ Public Class frmMain
             MsgBox("Cannot save to default config file. Please select another file.", MsgBoxStyle.Critical)
             Exit Sub
         End If
-
+        If File.Exists(sfdSaveConfig.FileName) Then
+            File.Delete(sfdSaveConfig.FileName)
+        End If
         Call File.Copy(FI_DEFAULT_CONFIG.FullName, sfdSaveConfig.FileName)
 
         Me.cboXMLConfFile.Items.Add(sfdSaveConfig.FileName)
@@ -110,19 +113,21 @@ Public Class frmMain
             End If
         Next
 
-        If Me.cboXMLConfFile.Items.Count > 0 Then
-            Me.cboXMLConfFile.SelectedItem = Me.cboXMLConfFile.Items(0)
+        If Me.cboXMLConfFile.Items.Count = 0 Then
 
-        Else
-            Console.WriteLine("Will Load DEFAULT config file from {0}", FI_DEFAULT_CONFIG.FullName)
-            'make sure that the "converted" folder exists.
-            If Directory.Exists(".\Converted\") = False Then
-                Directory.CreateDirectory(".\Converted\")
-                Console.WriteLine("Created directory {0}.", New DirectoryInfo(".\Converted\").FullName)
-            End If
-            Me.loadConfigurationFile(FI_DEFAULT_CONFIG.FullName)
+            Me.cboXMLConfFile.Items.Add(FI_DEFAULT_CONFIG.FullName)
+            'Else
+            '    Console.WriteLine("Will Load DEFAULT config file from {0}", FI_DEFAULT_CONFIG.FullName)
+            '    'make sure that the "converted" folder exists.
+            '    If Directory.Exists(".\Converted\") = False Then
+            '        Directory.CreateDirectory(".\Converted\")
+            '        Console.WriteLine("Created directory {0}.", New DirectoryInfo(".\Converted\").FullName)
+            '    End If
+            '    Me.loadConfigurationFile(FI_DEFAULT_CONFIG.FullName)
 
         End If
+
+        Me.cboXMLConfFile.SelectedItem = Me.cboXMLConfFile.Items(0)
 
         AddHandler Me.ucFormList.btnRunConversion.Click, AddressOf RunConversion
 
@@ -247,7 +252,7 @@ Public Class frmMain
 
             Me.Text = Me.getFormCaption()
 
-            Console.WriteLine("Configuration File {0} Loaded.", configFile)
+            ' Console.WriteLine("Configuration File {0} Loaded.", configFile)
 
         Catch ex As Exception
             Console.WriteLine("Error Loading configuration file {0}:{1}", configFile, ex.Message)

@@ -58,7 +58,7 @@ Partial Class frmMain
         Me.txtDotNetProjectPath.Location = New System.Drawing.Point(142, 60)
         Me.txtDotNetProjectPath.Name = "txtDotNetProjectPath"
         Me.txtDotNetProjectPath.ReadOnly = True
-        Me.txtDotNetProjectPath.Size = New System.Drawing.Size(708, 20)
+        Me.txtDotNetProjectPath.Size = New System.Drawing.Size(832, 20)
         Me.txtDotNetProjectPath.TabIndex = 6
         '
         'txtDatabase
@@ -68,7 +68,7 @@ Partial Class frmMain
         Me.txtDatabase.Location = New System.Drawing.Point(142, 84)
         Me.txtDatabase.Name = "txtDatabase"
         Me.txtDatabase.ReadOnly = True
-        Me.txtDatabase.Size = New System.Drawing.Size(708, 20)
+        Me.txtDatabase.Size = New System.Drawing.Size(832, 20)
         Me.txtDatabase.TabIndex = 9
         '
         'lblSvnRoot
@@ -99,17 +99,17 @@ Partial Class frmMain
         Me.txtResultsLog.Name = "txtResultsLog"
         Me.txtResultsLog.ReadOnly = True
         Me.txtResultsLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtResultsLog.Size = New System.Drawing.Size(576, 267)
+        Me.txtResultsLog.Size = New System.Drawing.Size(700, 267)
         Me.txtResultsLog.TabIndex = 12
         '
-        'ofSelectAccessDB
+        'ofSelectFile
         '
         Me.ofSelectFile.FileName = "OpenFileDialog1"
         '
         'btnSelectDotNetFolder
         '
         Me.btnSelectDotNetFolder.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSelectDotNetFolder.Location = New System.Drawing.Point(856, 58)
+        Me.btnSelectDotNetFolder.Location = New System.Drawing.Point(980, 58)
         Me.btnSelectDotNetFolder.Name = "btnSelectDotNetFolder"
         Me.btnSelectDotNetFolder.Size = New System.Drawing.Size(37, 22)
         Me.btnSelectDotNetFolder.TabIndex = 7
@@ -119,7 +119,7 @@ Partial Class frmMain
         'btnSelectAccessDB
         '
         Me.btnSelectAccessDB.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSelectAccessDB.Location = New System.Drawing.Point(856, 82)
+        Me.btnSelectAccessDB.Location = New System.Drawing.Point(980, 82)
         Me.btnSelectAccessDB.Name = "btnSelectAccessDB"
         Me.btnSelectAccessDB.Size = New System.Drawing.Size(37, 22)
         Me.btnSelectAccessDB.TabIndex = 10
@@ -135,7 +135,7 @@ Partial Class frmMain
         Me.mnMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.mnMain.Location = New System.Drawing.Point(0, 0)
         Me.mnMain.Name = "mnMain"
-        Me.mnMain.Size = New System.Drawing.Size(922, 24)
+        Me.mnMain.Size = New System.Drawing.Size(1046, 24)
         Me.mnMain.TabIndex = 0
         Me.mnMain.Text = "mnMain"
         '
@@ -219,13 +219,13 @@ Partial Class frmMain
         Me.cboXMLConfFile.BackColor = System.Drawing.SystemColors.Control
         Me.cboXMLConfFile.Location = New System.Drawing.Point(142, 34)
         Me.cboXMLConfFile.Name = "cboXMLConfFile"
-        Me.cboXMLConfFile.Size = New System.Drawing.Size(708, 21)
+        Me.cboXMLConfFile.Size = New System.Drawing.Size(832, 21)
         Me.cboXMLConfFile.TabIndex = 3
         '
         'btnOpenConfig
         '
         Me.btnOpenConfig.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnOpenConfig.Location = New System.Drawing.Point(856, 32)
+        Me.btnOpenConfig.Location = New System.Drawing.Point(980, 32)
         Me.btnOpenConfig.Name = "btnOpenConfig"
         Me.btnOpenConfig.Size = New System.Drawing.Size(37, 22)
         Me.btnOpenConfig.TabIndex = 4
@@ -252,7 +252,7 @@ Partial Class frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(922, 433)
+        Me.ClientSize = New System.Drawing.Size(1046, 433)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.ucFormList)
         Me.Controls.Add(Me.btnOpenConfig)
