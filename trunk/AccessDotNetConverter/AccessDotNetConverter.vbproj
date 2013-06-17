@@ -119,6 +119,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -149,12 +152,16 @@
     <Compile Include="AcessControl\AccessToDotNetControl.vb" />
     <Compile Include="AcessControl\AccessControlFactory.vb" />
     <Compile Include="AcessControl\AccessToDotNetForm.vb" />
+    <Compile Include="AcessControl\AccessToDotNetImage.vb" />
     <Compile Include="AcessControl\AccessToDotNetLabel.vb" />
     <Compile Include="AcessControl\AccessToDotNetLine.vb" />
     <Compile Include="AcessControl\AccessToDotNetTab.vb" />
     <Compile Include="AcessControl\AccessToDotNetTabPage.vb" />
     <Compile Include="AcessControl\AccessToDotNetTextbox.vb" />
     <Compile Include="AcessControl\AcControlType.vb" />
+    <Compile Include="AcessControl\IconConverter.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>

@@ -256,7 +256,7 @@ Public Class frmMain
         End Try
 
         Me.txtDatabase.Text = AccessConversionContext.current.sourceAccessDatabase
-        Me.txtDotNetProjectPath.Text = AccessConversionContext.current.dotNetProjectPath
+        Me.txtDotNetProjectPath.Text = New DirectoryInfo(AccessConversionContext.current.dotNetProjectPath).FullName
         Me.ucFormList.lstForms.DataSource = AccessConversionContext.current.getAllAccessForms
 
 
