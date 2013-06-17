@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+This configuration file is also the default config file of the application. if none is specified, this will be used.
+The "sourceAccessDatabase" and "targetDotNetProjectPath" can be overwritten by selecting the path from frmMain form.
+
+The root element "AccessToDotNetConfig" specifies the following:
+
+1. fileExtension : .cs or .vb
+2. sourceAccessDatabase : The source MS Access database
+3. defaultBaseForm: The base form that all converted forms will inherit. Default is "System.Windows.Forms.Form"
+4. defaultBaseFormTemplate : The base template to use for generating form code
+5. targetDotNetProjectPath : The root path to place converted files
+
+-->
+<AccessToDotNetConfig
+	  fileExtension="vb"
+    sourceAccessDatabase=".\testdatabase.mdb"
+    defaultBaseForm="System.Windows.Forms.Form"
+    namingHandler="AccessDotNetConverter.DefaultNameHandler"
+    defaultBaseFormTemplate=".\VBNetFormTemplate.txt"
+	  targetDotNetProjectPath=".\Converted\">
+
+   <controlmaps>
+    <!-- The rule below tells the system that by default all Forms will inherit "System.Windows.Forms.Form" and 
+    the handler will be the class AccessDotNetConverter.AccessToDotNetForm 
+    -->
+    <controlmap accessType="acForm" 
+                dotnetType="System.Windows.Forms.Form" 
+                handler="AccessDotNetConverter.AccessToDotNetForm" />
+
+     <!-- The rule below will apply to all forms with name frmListX. Note that 
+          the "dotnetType" attribute below will cause all forms that match the regular 
+          expression to inherit from "org.codegen.win.controls.frmBaseGrid"-->
+     <controlmap accessType="acForm" nameMatch="^frmList*"
+                 dotnetType="org.codegen.win.controls.frmBaseGrid" 
+                 handler="AccessDotNetConverter.AccessToDotNetForm">
+       
+       <!-- All forms that match the regular expression above will inherit from "org.codegen.win.controls.frmBaseGrid"
+       has a Panel named "Me.pnlGrid" and all converted controls should be added to this control. -->
+       <rootControl>Me.pnlGrid</rootControl>
+       
+     </controlmap>
+
+     <!-- below maps are for controls that we handle.  Any access control not appearing below in the accessType attribute 
+     will not be converted -->
+     <controlmap accessType="acTextBox" dotnetType="Textbox" handler="AccessDotNetConverter.AccessToDotNetTextbox" />
+    
+    <controlmap accessType="acComboBox" dotnetType="AccessCombo" handler="AccessDotNetConverter.AccessToDotNetCombo"  />
+    <controlmap accessType="acListBox" dotnetType="AccessListBox" handler="AccessDotNetConverter.AccessToDotNetListbox"  />
+
+    <controlmap accessType="acLabel" dotnetType="Label" handler="AccessDotNetConverter.AccessToDotNetLabel" />
+    <controlmap accessType="acCommandButton" dotnetType="System.Windows.Forms.Button" handler="AccessDotNetConverter.AccessToDotNetCommandButton"/>
+    
+    <controlmap accessType="acTabCtl" dotnetType="System.Windows.Forms.TabControl"  handler="AccessDotNetConverter.AccessToDotNetTab"/>
+    <controlmap accessType="acPage" dotnetType="System.Windows.Forms.TabPage"  handler="AccessDotNetConverter.AccessToDotNetTabPage"/>
+    <controlmap accessType="acCheckBox" dotnetType="System.Windows.Forms.Checkbox" handler="AccessDotNetConverter.AccessToDotNetCheckbox" />
+	
+	  <controlmap accessType="acOptionGroup" 
+					dotnetType="System.Windows.Forms.GroupBox" 
+					handler="AccessDotNetConverter.AccessToDotNetControl" /> 
+
+    <controlmap accessType="acRectangle"
+					dotnetType="System.Windows.Forms.GroupBox"
+					handler="AccessDotNetConverter.AccessToDotNetControl" /> 
+    
+	
+  </controlmaps>
+
+</AccessToDotNetConfig>
