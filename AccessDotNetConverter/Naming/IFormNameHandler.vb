@@ -7,7 +7,7 @@ End Interface
 Public Class DefaultNameHandler
     Implements INamingHandler
 
-    Public Function getDotNetname(cname As String) As String Implements INamingHandler.getDotNetname
+    Public Function getDotNetname(ByVal cname As String) As String Implements INamingHandler.getDotNetname
 
         Dim i As Integer
         Dim ret As String = String.Empty
@@ -20,7 +20,7 @@ Public Class DefaultNameHandler
         If ret.ToLower = "name" Then
             ret = "__" & cname
         End If
-
+        ret = ret.Replace(" ", "_")
         Return ret
     End Function
 End Class

@@ -71,10 +71,10 @@ Public Class frmMain
         'ofSelectAccessDB.CheckFileExists = True
         ofSelectFile.CheckPathExists = True
         'Image Files (*.bmp, *.jpg)|*.bmp;*.jpg
-        ofSelectFile.Filter = "Access Databases|*.mdb;*.adp|All Files|*.*"
+        ofSelectFile.Filter = "Access Databases|*.accdb;*.mdb;*.adp|All Files|*.*"
         ofSelectFile.FileName = String.Empty
         ofSelectFile.Multiselect = False
-        ofSelectFile.Title = "Select Access File"
+        ofSelectFile.Title = "Select Microsoft Access Database File"
         ofSelectFile.ShowDialog()
 
         If ofSelectFile.FileName <> String.Empty Then
@@ -148,6 +148,7 @@ Public Class frmMain
         End If
 
         'if the config loaded is the default config, select another name
+        Dim thisConfigFile As String = AccessConversionContext.current.configFile
 
         If New FileInfo(AccessConversionContext.current.configFile).FullName = FI_DEFAULT_CONFIG.FullName Then
 
@@ -164,10 +165,10 @@ Public Class frmMain
                 MsgBox("Cannot save to default config file. Please select another file.", MsgBoxStyle.Critical)
                 Exit Sub
             End If
-
+            thisConfigFile = sfdSaveConfig.FileName
         End If
 
-        Me.saveProjectInfo(sfdSaveConfig.FileName)
+        Me.saveProjectInfo(thisConfigFile)
 
     End Sub
 
