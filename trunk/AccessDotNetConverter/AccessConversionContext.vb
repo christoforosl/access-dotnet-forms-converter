@@ -121,7 +121,7 @@ Public Class AccessConversionContext
 
         Me.sourceAccessDatabase = elmnt.Attribute("sourceAccessDatabase").Value()
 
-        If Directory.Exists(Me.dotNetProjectPath) = False Then
+        If File.Exists(Me.sourceAccessDatabase) = False Then
             Console.WriteLine(String.Format("Error: sourceAccessDatabase ""{0}"" does not exist.", Me.sourceAccessDatabase))
         End If
 

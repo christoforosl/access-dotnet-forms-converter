@@ -115,6 +115,11 @@ Public Class frmMain
 
         Else
             Console.WriteLine("Will Load DEFAULT config file from {0}", FI_DEFAULT_CONFIG.FullName)
+            'make sure that the "converted" folder exists.
+            If Directory.Exists(".\Converted\") = False Then
+                Directory.CreateDirectory(".\Converted\")
+                Console.WriteLine("Created directory {0}.", New DirectoryInfo(".\Converted\").FullName)
+            End If
             Me.loadConfigurationFile(FI_DEFAULT_CONFIG.FullName)
 
         End If
