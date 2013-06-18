@@ -5,14 +5,30 @@ Public Class AccessToDotNetImage
 
     Public Overrides Function getControlLayoutCode() As String
 
-        Dim ret As StringBuilder = New StringBuilder(MyBase.getControlLayoutCode())
-        'Dim o As Object = AccessConversionContext.current.AccessApplication.SysCmd(712, Me.accessControl)
-        'Dim img As System.Drawing.Image = IconConverter.GetNetPictureFromIPicture(o)
-        'img.Save(AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
+        Dim accAppl As Object = AccessConversionContext.current.AccessApplication
+        Dim accFormName As String = AccessConversionContext.current.AccessForm.name
 
-        'ret.Append("Me.ImageLocaltion= " & AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
+        Try
 
-        Return ret.ToString
+            Dim ret As StringBuilder = New StringBuilder(MyBase.getControlLayoutCode())
+            'Dim evalCode As String = String.Format("SysCmd(712,forms(""{0}"").{1})", _
+            '                                        AccessConversionContext.current.AccessForm.name, _
+            '                                        Me.accessControl.name)
+
+
+            Dim o As stdole.IPictureDisp = accAppl.SysCmd(712, accAppl.forms(accFormName).Controls(Me.accessControl.name))
+
+            Dim img As System.Drawing.Image = IconConverter.GetNetPictureFromIPicture(o)
+            'img.Save(AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
+
+            'ret.Append("Me.ImageLocaltion= " & AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
+
+            Return ret.ToString
+
+        Finally
+            accAppl = Nothing
+
+        End Try
 
     End Function
 
