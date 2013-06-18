@@ -13,6 +13,12 @@ Public Class AccessConversionContext
 
     Public Const DEFAULT_CONFIG_FILE As String = ".\sampleProject.xml"
 
+    ''' <summary>
+    ''' The current access form being converted
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private _accessForm As Object 'Access.Form
+
     Private _ProjectName As String
 
     ''' <summary>
@@ -216,15 +222,14 @@ Public Class AccessConversionContext
 
     Public Function convertForm(fname As String) As Boolean
 
-        Dim f As Object 'Access.Form
         Dim c As Object 'Access.Control
 
         Try
             AccessConversionContext.current.processedControls.Clear()
             Me.AccessApplication.DoCmd.OpenForm(fname, 1) '1 = Access.AcFormView.acDesign
-            f = Me.AccessApplication.Forms(fname)
+            _accessForm = Me.AccessApplication.Forms(fname)
 
-            If f.DefaultView = 1 Then
+            If accessForm.DefaultView = 1 Then
                 'default view is "Continious forms
                 'for the moment not supported
                 Console.WriteLine("****STOP: Continuous Forms not supported.")
@@ -232,7 +237,7 @@ Public Class AccessConversionContext
             End If
 
             Dim fdotnet As New AccessDotNetConverter.AccessToDotNetForm
-            fdotnet.accessControl = f
+            fdotnet.accessControl = accessForm
 
             Dim code As String = fdotnet.getDotNetDesignerCode()
             Dim formDotNetName As String = fdotnet.dotNetName
@@ -256,7 +261,7 @@ Public Class AccessConversionContext
 
             Return True
         Finally
-            f = Nothing
+            _accessForm = Nothing
             c = Nothing
 
             Me.closeAndReleaseAccessCOM()
@@ -329,6 +334,17 @@ Public Class AccessConversionContext
     ReadOnly Property ProjectName() As String
         Get
             Return _ProjectName
+        End Get
+    End Property
+
+
+    ''' <summary>
+    ''' Gets The current access form being converted
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public ReadOnly Property AccessForm() As Object
+        Get
+            Return _accessForm
         End Get
     End Property
 
