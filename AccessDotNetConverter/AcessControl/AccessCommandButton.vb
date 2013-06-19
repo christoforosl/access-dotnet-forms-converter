@@ -8,6 +8,8 @@ Public Class AccessToDotNetCommandButton
 
 
         If Not IsDBNull(Me.accessControl.pictureData) Then
+            'imagetest.SavePicture712(Me.accessControl.pictureData)
+
             'Dim pic As New FileInfo("..\..\" & Me.accessControl.name & ".PNG")
             'Dim pic As stdole.IPictureDisp
             'pic = AccessConversionContext.current.AccessApp.SysCmd(712, Me.accessControl)
