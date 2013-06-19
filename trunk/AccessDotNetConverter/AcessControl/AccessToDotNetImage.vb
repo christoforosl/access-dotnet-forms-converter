@@ -11,17 +11,20 @@ Public Class AccessToDotNetImage
         Try
 
             Dim ret As StringBuilder = New StringBuilder(MyBase.getControlLayoutCode())
-            'Dim evalCode As String = String.Format("SysCmd(712,forms(""{0}"").{1})", _
-            '                                        AccessConversionContext.current.AccessForm.name, _
-            '                                        Me.accessControl.name)
+
+            imagetest.SavePicture712(Me.accessControl.pictureData)
+
+            ''Dim evalCode As String = String.Format("SysCmd(712,forms(""{0}"").{1})", _
+            ''                                        AccessConversionContext.current.AccessForm.name, _
+            ''                                        Me.accessControl.name)
 
 
-            Dim o As stdole.IPictureDisp = accAppl.SysCmd(712, accAppl.forms(accFormName).Controls(Me.accessControl.name))
+            'Dim o As stdole.IPictureDisp = accAppl.SysCmd(712, accAppl.forms(accFormName).Controls(Me.accessControl.name))
 
-            Dim img As System.Drawing.Image = IconConverter.GetNetPictureFromIPicture(o)
-            'img.Save(AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
+            'Dim img As System.Drawing.Image = IconConverter.GetNetPictureFromIPicture(o)
+            ''img.Save(AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
 
-            'ret.Append("Me.ImageLocaltion= " & AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
+            ''ret.Append("Me.ImageLocaltion= " & AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
 
             Return ret.ToString
 
