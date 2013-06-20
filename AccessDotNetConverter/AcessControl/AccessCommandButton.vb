@@ -8,30 +8,11 @@ Public Class AccessToDotNetCommandButton
 
 
         If Not IsDBNull(Me.accessControl.pictureData) Then
-            'imagetest.SavePicture712(Me.accessControl.pictureData)
+            ImageConverter.SavePictureData(Me.accessControl.pictureData, Me.accessControl.name)
 
-            'Dim pic As New FileInfo("..\..\" & Me.accessControl.name & ".PNG")
-            'Dim pic As stdole.IPictureDisp
-            'pic = AccessConversionContext.current.AccessApp.SysCmd(712, Me.accessControl)
-
-            'Dim img As Image
-            ''Dim picbytes() As Byte = ConvertOleBytesToRawBytes(Me.accessControl.pictureData)
-            'Dim picbytes() As Byte = Me.accessControl.pictureData
-            'Dim txt As String = System.Text.Encoding.GetEncoding(1252).GetString(picbytes)
-            'ms.Seek(0, SeekOrigin.Begin)
-            'Dim bmp As Bitmap = New Bitmap(ms)
-
-            'img = Image.FromStream(ms, False, False)
-            'img.Save(pic.FullName)
-
-            'ms.Close()
-
-            ' File.WriteAllText(pic.FullName, txt)
         End If
 
         Dim thisCtrl = MyBase.getControlLayoutCode()
-
-
 
         thisCtrl = thisCtrl & vbCrLf & "Me." & dotNetInstanceName & ".Text = " & exNetText(Me.accessControl.Caption)
         If Me.accessControl.ForeColor <> 0 Then

@@ -2,98 +2,61 @@
 Imports System.Text
 Imports System.Runtime.InteropServices
 
+''' <summary>
+''' Some parts taken from http://www.lebans.com/imagecontroltoclipboard.htm
+''' </summary>
+''' <remarks></remarks>
+Public Module ImageConverter
 
-Public Class IconConverter
-    Inherits System.Windows.Forms.AxHost
+    ' ClipBoard Formats
+    Private Const CF_BITMAP = 2
+    Private Const CF_DIB = 8
+    Private Const CF_ENHMETAFILE = 14
+    Private Const CF_METAFILEPICT = 3
 
-    Private Sub New()
-        MyBase.new(String.Empty)
+    Public Sub SavePictureData(ByVal picData As Byte(), ByVal ctrlname As String)
+
+        'HOW IT WORKS:
+        ' The first 8 Bytes of a PictureData prop signify
+        ' that the data is structured as one of the
+        ' following ClipBoard Formats.
+        ' CF_DIB
+        ' CF_ENHMETAFILE
+        ' CF_METAFILEPICT
+        ' If the first 40 bytes of a PictureData prop are
+        ' not a BITMAPINFOHEADER structure then we will find
+        ' a ClipBoard Format structure of 8 Bytes in length
+        ' signifying whether a Metafile or Enhanced Metafile is present.
+        '
+        ' So the first 4 bytes tell us the format of the data.
+        ' The next 4 bytes point to handle for a Memory Metafile.
+        ' This is not needed for our purposes.
+
+        Select Case picData(0)
+            Case 40
+                ' This is a straight DIB.
+                Call saveAsMetafile(picData, ctrlname, ".bmp")
+            Case CF_ENHMETAFILE
+                ' New Enhanced Metafile(EMF)
+                Call saveAsMetafile(picData, ctrlname, ".emf")
+            Case CF_METAFILEPICT
+                ' Old Metafile format(WMF)
+        End Select
     End Sub
 
+    Private Sub saveAsMetafile(ByVal PicData As Byte(), ByVal ctrlname As String, ByVal extension As String)
+        Dim fname As String = Environ("Temp") + "\" + ctrlname + extension 'The name of the file to save the picture to
+        Dim lngRet As Long
 
-    Public Shared Function GetIPictureDispFromNetPicture2(image As System.Drawing.Image) As stdole.IPictureDisp
+        Dim newsize As Integer = PicData.Length - 1
+        Dim cArray(newsize - 8) As Byte
 
-        Return CType(GetIPictureDispFromPicture(image), stdole.IPictureDisp)
+        ' Copy to our array
+        For lngRet = 8 To UBound(cArray)
+            cArray(lngRet - 8) = PicData(lngRet)
+        Next
 
-    End Function
-    Public Shared Function GetNetPictureFromIPicture(pic As Object) As System.Drawing.Image
-
-        Return CType(GetPictureFromIPicture(pic), System.Drawing.Image)
-
-    End Function
-
-
-End Class
-
-Public Module imagetest
-    Private Structure BITMAPFILEHEADER
-        Public bfType As Integer
-        Public bfSize As Long
-        Public bfReserved1 As Integer
-        Public bfReserved2 As Integer
-        Public bfOffBits As Long
-    End Structure
-
-    Private Structure BITMAPINFOHEADER '40 bytes
-        Public biSize As Long
-        Public biWidth As Long
-        Public biHeight As Long
-        Public biPlanes As Integer
-        Public biBitCount As Integer
-        Public biCompression As Long
-        Public biSizeImage As Long
-        Public biXPelsPerMeter As Long
-        Public biYPelsPerMeter As Long
-        Public biClrUsed As Long
-        Public biClrImportant As Long
-    End Structure
-
-    Private Const CF_ENHMETAFILE = 14
-
-    Private Declare Sub CopyMemory1 Lib "kernel32" Alias "RtlMoveMemory" ( _
-       lpvDest As BITMAPINFOHEADER, lpvSource As Byte, ByVal cbCopy As Long)
-
-    Private Declare Sub CopyMemory2 Lib "kernel32" Alias "RtlMoveMemory" ( _
-       lpvDest As Byte, lpvSource As Byte, ByVal cbCopy As Long)
-
-    Public Sub SavePicture712(bPicData As Byte())
-
-        Dim bih As BITMAPINFOHEADER
-        Dim bfh As BITMAPFILEHEADER
-        Dim nFile As Integer
-
-        'CopyMemory1(bih, bPicData(0), Len(bih))
-        Dim ptr As New System.IntPtr
-        'ptr = Marshal.AllocHGlobal(Marshal.SizeOf(bih))
-        Call Marshal.Copy(bPicData, 0, ptr, 1)
-
-        If bih.biSize = Len(bih) Then 'DIB
-            bfh.bfType = Asc("B") + Asc("M") * 256
-            bfh.bfSize = Len(bfh) + Len(bih) + bih.biSizeImage
-            If (bih.biClrUsed = 0) And (bih.biBitCount <= 8) Then _
-               bih.biClrUsed = 2& ^ bih.biBitCount
-            bfh.bfOffBits = Len(bfh) + Len(bih) + bih.biClrUsed * 4
-            nFile = FreeFile()
-            FileOpen("tmp.bmp", nFile, OpenMode.Binary, OpenAccess.ReadWrite)
-            FileClose(nFile)
-            FileOpen("tmp.bmp", nFile, OpenMode.Binary, OpenAccess.Write)
-            FilePut(nFile, bfh)
-            FilePut(nFile, bPicData)
-            FileClose(nFile)
-
-        ElseIf bih.biSize = CF_ENHMETAFILE Then 'EMF
-            CopyMemory2(bPicData(0), bPicData(8), UBound(bPicData) - 7)
-            ReDim Preserve bPicData(0 To UBound(bPicData) - 8)
-            nFile = FreeFile()
-            FileOpen("tmp.emf", nFile, OpenMode.Binary, OpenAccess.ReadWrite)
-            FileClose(nFile)
-            FileOpen("tmp.emf", nFile, OpenMode.Binary, OpenAccess.Write)
-            FilePut(nFile, bPicData)
-            FileClose(nFile)
-        Else
-            Throw New ApplicationException("Invalid Format")
-            Exit Sub
-        End If
+        System.IO.File.WriteAllBytes(fname, cArray)
 
     End Sub
 
