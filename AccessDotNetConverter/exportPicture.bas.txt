@@ -1,0 +1,18 @@
+Public Function exportPicture(path As String, formname As String, controlname As String) As String
+
+    Dim f As Form
+    Dim o As Object
+    Dim filename As String
+    
+    DoCmd.OpenForm formname, acDesign
+    Set f = Application.Forms(formname)
+    Set o = SysCmd(712, f.Controls(controlname))
+    If o.Type = 4 Then
+        filename = path & controlname & ".emf"
+        Call stdole.SavePicture(o, filename)
+    End If
+    
+    Set f = Nothing
+    exportPicture = filename
+    
+End Function
