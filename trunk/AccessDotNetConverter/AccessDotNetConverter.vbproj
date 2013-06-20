@@ -159,9 +159,7 @@
     <Compile Include="AcessControl\AccessToDotNetTabPage.vb" />
     <Compile Include="AcessControl\AccessToDotNetTextbox.vb" />
     <Compile Include="AcessControl\AcControlType.vb" />
-    <Compile Include="AcessControl\IconConverter.vb">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="AcessControl\IconConverter.vb" />
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
@@ -272,8 +270,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip
-"C:\Program Files\7-Zip\7z" a C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip $(TargetDir)\*.* -x!*vshost* -x!*.tmp  -x!*.pdb</PostBuildEvent>
+    <PostBuildEvent>rem del C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip
+rem  "C:\Program Files\7-Zip\7z" a C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip $(TargetDir)\*.* -x!*vshost* -x!*.tmp  -x!*.pdb</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -13,22 +13,7 @@ Public Class AccessToDotNetImage
 
             Dim ret As StringBuilder = New StringBuilder(MyBase.getControlLayoutCode())
 
-            'imagetest.SavePicture712(Me.accessControl.pictureData)
-
-            'Dim evalCode As String = String.Format("Dim o as object" & vbCrLf & _
-            '                                       "set o = SysCmd(712,forms(""{0}"").{1})" & vbCrLf & _
-            '                                       "Call stdole.SavePicture(o, ""c:\users\chris\test.emf"")", _
-            '                                        AccessConversionContext.current.AccessForm.name, _
-            '                                        Me.accessControl.name)
-            'Call accAppl.eval(evalCode)
-            'Dim c As Access.Image = accAppl.forms(accFormName).Controls(Me.accessControl.name)
-            'Dim assapp As Access.Application = AccessConversionContext.current.AccessApplication
-            'Dim o As stdole.IPictureDisp = accAppl.SysCmd(712, c.Name)
-
-            'Dim img As System.Drawing.Image = IconConverter.GetNetPictureFromIPicture(o)
-            ''img.Save(AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
-
-            ''ret.Append("Me.ImageLocaltion= " & AccessConversionContext.current.dotNetProjectPath & Me.accessControl.name)
+            ImageConverter.SavePictureData(Me.accessControl.pictureData, Me.accessControl.name)
 
             Return ret.ToString
 

@@ -1,18 +1,21 @@
-Public Function exportPicture(path As String, formname As String, controlname As String) As String
+I am using MS Access automation from VB.NET to write an application that converts MS Access Forms to .NET Forms.  The code for the project is here: http://code.google.com/p/access-dotnet-forms-converter/
 
-    Dim f As Form
-    Dim o As Object
-    Dim filename As String
-    
-    DoCmd.OpenForm formname, acDesign
-    Set f = Application.Forms(formname)
-    Set o = SysCmd(712, f.Controls(controlname))
-    If o.Type = 4 Then
-        filename = path & controlname & ".emf"
-        Call stdole.SavePicture(o, filename)
-    End If
-    
-    Set f = Nothing
-    exportPicture = filename
-    
-End Function
+I am stuck with exporting the images out of MS Access Image and Command Button controls.
+I have tried the approach of Ms Access **syscmd(712, NameOfControl)** to get an ole picture from PictureData property, and then use AxHost.GetPictureFromIPicture.  
+The problem with this approach is the call to syscmd(712) from vb.net.  No matter what combination I use to call syscmd 712, access issues error "You made an illegal function call."
+
+For example:
+
+In the below code "accAppl" is an object reference to an Access.Application object and 
+"control" is an object reference to an Access.Image control  
+
+    Dim o As stdole.IPictureDisp = accAppl.SysCmd(712, control.Name) <-- FAILS
+
+    Dim o As stdole.IPictureDisp = accAppl.SysCmd(712, control) <-- FAILS
+
+    Dim o As stdole.IPictureDisp = accAppl.SysCmd(712, accAppl.Forms("formname").Controls("controlname") <-- FAILS
+
+
+Note that the same above code called from an access vba module works without a problem.
+
+Another approach I tried 
