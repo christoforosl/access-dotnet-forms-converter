@@ -229,7 +229,7 @@ Public Class AccessConversionContext
             Me.AccessApplication.DoCmd.OpenForm(fname, 1) '1 = Access.AcFormView.acDesign
             _accessForm = Me.AccessApplication.Forms(fname)
 
-            If accessForm.DefaultView = 1 Then
+            If AccessForm.DefaultView = 1 Then
                 'default view is "Continious forms
                 'for the moment not supported
                 Console.WriteLine("****STOP: Continuous Forms not supported.")
@@ -237,7 +237,7 @@ Public Class AccessConversionContext
             End If
 
             Dim fdotnet As New AccessDotNetConverter.AccessToDotNetForm
-            fdotnet.accessControl = accessForm
+            fdotnet.accessControl = AccessForm
 
             Dim code As String = fdotnet.getDotNetDesignerCode()
             Dim formDotNetName As String = fdotnet.dotNetName
@@ -347,5 +347,7 @@ Public Class AccessConversionContext
             Return _accessForm
         End Get
     End Property
+
+   
 
 End Class

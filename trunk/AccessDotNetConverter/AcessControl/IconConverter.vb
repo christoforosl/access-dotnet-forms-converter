@@ -63,8 +63,8 @@ Public Module imagetest
         Dim nFile As Integer
 
         'CopyMemory1(bih, bPicData(0), Len(bih))
-        Dim ptr As System.IntPtr
-        ptr = Marshal.AllocHGlobal(Marshal.SizeOf(bih))
+        Dim ptr As New System.IntPtr
+        'ptr = Marshal.AllocHGlobal(Marshal.SizeOf(bih))
         Call Marshal.Copy(bPicData, 0, ptr, 1)
 
         If bih.biSize = Len(bih) Then 'DIB
