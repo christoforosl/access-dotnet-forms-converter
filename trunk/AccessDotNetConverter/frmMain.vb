@@ -25,8 +25,10 @@ Public Class frmMain
 
     Private Sub tsNewProject_click(sender As System.Object, e As System.EventArgs) Handles tsNewProject.Click
 
-        ofSelectFile.Filter = "XML Project File|*.xml|All Files|*.*"
+        sfdSaveConfig.Filter = "XML Project File|*.xml"
         sfdSaveConfig.Title = "Select Project File Name"
+        sfdSaveConfig.DefaultExt = ".xml"
+
         sfdSaveConfig.AddExtension = True
         sfdSaveConfig.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
         sfdSaveConfig.DefaultExt = ".xml"
@@ -41,7 +43,12 @@ Public Class frmMain
         If File.Exists(sfdSaveConfig.FileName) Then
             File.Delete(sfdSaveConfig.FileName)
         End If
-        Call File.Copy(FI_DEFAULT_CONFIG.FullName, sfdSaveConfig.FileName)
+
+        Dim x As XDocument = XDocument.Load(FI_DEFAULT_CONFIG.FullName)
+        x.Document.Element("AccessToDotNetConfig").Attribute("targetDotNetProjectPath").Value = ""
+        x.Document.Element("AccessToDotNetConfig").Attribute("sourceAccessDatabase").Value = ""
+
+        x.Save(sfdSaveConfig.FileName)
 
         Me.cboXMLConfFile.Items.Add(sfdSaveConfig.FileName)
         Me.cboXMLConfFile.Text = sfdSaveConfig.FileName
@@ -261,8 +268,21 @@ Public Class frmMain
         End Try
 
         Me.txtDatabase.Text = AccessConversionContext.current.sourceAccessDatabase
-        Me.txtDotNetProjectPath.Text = New DirectoryInfo(AccessConversionContext.current.dotNetProjectPath).FullName
-        Me.ucFormList.lstForms.DataSource = AccessConversionContext.current.getAllAccessForms
+        If String.IsNullOrEmpty(AccessConversionContext.current.dotNetProjectPath) Then
+            Me.txtDotNetProjectPath.Text = String.Empty
+
+        Else
+            Me.txtDotNetProjectPath.Text = New DirectoryInfo(AccessConversionContext.current.dotNetProjectPath).FullName
+
+        End If
+
+        If String.IsNullOrEmpty(Me.txtDatabase.Text) Then
+            Me.ucFormList.lstForms.DataSource = Nothing
+            'Me.ucFormList.lstForms.Items.Clear()
+        Else
+            Me.ucFormList.lstForms.DataSource = AccessConversionContext.current.getAllAccessForms
+        End If
+
 
 
     End Sub
