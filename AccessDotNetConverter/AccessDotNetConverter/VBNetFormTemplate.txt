@@ -33,7 +33,7 @@ Partial Class <__form_name__>
         <__CONTROL__LAYOUT__>
        
 		
-		 Me.ErrProvider.ContainerControl = Me
+		Me.ErrProvider.ContainerControl = Me
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         
@@ -51,6 +51,6 @@ Partial Class <__form_name__>
 	
 	End Sub
 
-    __CONTROL__DECL__
+    <__CONTROL__DECL__>
     Friend WithEvents ErrProvider As System.Windows.Forms.ErrorProvider
 End Class

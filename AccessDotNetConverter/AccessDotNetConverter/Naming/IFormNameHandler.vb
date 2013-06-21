@@ -11,7 +11,7 @@ Public Class DefaultNameHandler
 
         Dim i As Integer
         Dim ret As String = String.Empty
-
+        cname = cname.Replace(" ", "_")
         Dim arr As String() = Split(cname, "_")
         For i = 0 To UBound(arr)
             ret = ret & Mid$(arr(i), 1, 1).ToUpper & Mid$(arr(i), 2)
@@ -20,7 +20,7 @@ Public Class DefaultNameHandler
         If ret.ToLower = "name" Then
             ret = "__" & cname
         End If
-        ret = ret.Replace(" ", "_")
+
         Return ret
     End Function
 End Class
