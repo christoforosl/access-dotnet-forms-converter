@@ -55,7 +55,7 @@ Partial Class frmMain
         '
         Me.txtDotNetProjectPath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtDotNetProjectPath.Location = New System.Drawing.Point(142, 60)
+        Me.txtDotNetProjectPath.Location = New System.Drawing.Point(142, 70)
         Me.txtDotNetProjectPath.Name = "txtDotNetProjectPath"
         Me.txtDotNetProjectPath.ReadOnly = True
         Me.txtDotNetProjectPath.Size = New System.Drawing.Size(832, 20)
@@ -65,7 +65,7 @@ Partial Class frmMain
         '
         Me.txtDatabase.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtDatabase.Location = New System.Drawing.Point(142, 84)
+        Me.txtDatabase.Location = New System.Drawing.Point(142, 94)
         Me.txtDatabase.Name = "txtDatabase"
         Me.txtDatabase.ReadOnly = True
         Me.txtDatabase.Size = New System.Drawing.Size(832, 20)
@@ -74,7 +74,7 @@ Partial Class frmMain
         'lblSvnRoot
         '
         Me.lblSvnRoot.AutoSize = True
-        Me.lblSvnRoot.Location = New System.Drawing.Point(13, 63)
+        Me.lblSvnRoot.Location = New System.Drawing.Point(13, 73)
         Me.lblSvnRoot.Name = "lblSvnRoot"
         Me.lblSvnRoot.Size = New System.Drawing.Size(126, 13)
         Me.lblSvnRoot.TabIndex = 5
@@ -83,7 +83,7 @@ Partial Class frmMain
         'lblDbPath
         '
         Me.lblDbPath.AutoSize = True
-        Me.lblDbPath.Location = New System.Drawing.Point(17, 87)
+        Me.lblDbPath.Location = New System.Drawing.Point(17, 97)
         Me.lblDbPath.Name = "lblDbPath"
         Me.lblDbPath.Size = New System.Drawing.Size(122, 13)
         Me.lblDbPath.TabIndex = 8
@@ -109,7 +109,7 @@ Partial Class frmMain
         'btnSelectDotNetFolder
         '
         Me.btnSelectDotNetFolder.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSelectDotNetFolder.Location = New System.Drawing.Point(980, 58)
+        Me.btnSelectDotNetFolder.Location = New System.Drawing.Point(980, 68)
         Me.btnSelectDotNetFolder.Name = "btnSelectDotNetFolder"
         Me.btnSelectDotNetFolder.Size = New System.Drawing.Size(37, 22)
         Me.btnSelectDotNetFolder.TabIndex = 7
@@ -119,7 +119,7 @@ Partial Class frmMain
         'btnSelectAccessDB
         '
         Me.btnSelectAccessDB.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSelectAccessDB.Location = New System.Drawing.Point(980, 82)
+        Me.btnSelectAccessDB.Location = New System.Drawing.Point(980, 92)
         Me.btnSelectAccessDB.Name = "btnSelectAccessDB"
         Me.btnSelectAccessDB.Size = New System.Drawing.Size(37, 22)
         Me.btnSelectAccessDB.TabIndex = 10
@@ -143,70 +143,70 @@ Partial Class frmMain
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNewProject, Me.tsmiOpenProject, Me.tsmiSave, Me.tmiSep1, Me.tmiExit})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'tsNewProject
         '
         Me.tsNewProject.Name = "tsNewProject"
         Me.tsNewProject.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.tsNewProject.Size = New System.Drawing.Size(186, 22)
+        Me.tsNewProject.Size = New System.Drawing.Size(177, 22)
         Me.tsNewProject.Text = "&New Project"
         '
         'tsmiOpenProject
         '
         Me.tsmiOpenProject.Name = "tsmiOpenProject"
         Me.tsmiOpenProject.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.tsmiOpenProject.Size = New System.Drawing.Size(186, 22)
+        Me.tsmiOpenProject.Size = New System.Drawing.Size(177, 22)
         Me.tsmiOpenProject.Text = "&Open Project"
         '
         'tsmiSave
         '
         Me.tsmiSave.Name = "tsmiSave"
         Me.tsmiSave.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.tsmiSave.Size = New System.Drawing.Size(186, 22)
+        Me.tsmiSave.Size = New System.Drawing.Size(177, 22)
         Me.tsmiSave.Text = "Save &Project"
         '
         'tmiSep1
         '
         Me.tmiSep1.Name = "tmiSep1"
-        Me.tmiSep1.Size = New System.Drawing.Size(183, 6)
+        Me.tmiSep1.Size = New System.Drawing.Size(174, 6)
         '
         'tmiExit
         '
         Me.tmiExit.Name = "tmiExit"
         Me.tmiExit.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
-        Me.tmiExit.Size = New System.Drawing.Size(186, 22)
+        Me.tmiExit.Size = New System.Drawing.Size(177, 22)
         Me.tmiExit.Text = "E&xit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiExportToText, Me.tmiCreateFromSVNSources, Me.ToolStripSeparator1})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(59, 20)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(54, 20)
         Me.ToolStripMenuItem1.Text = "Actions"
         '
         'tmiExportToText
         '
         Me.tmiExportToText.Name = "tmiExportToText"
-        Me.tmiExportToText.Size = New System.Drawing.Size(208, 22)
+        Me.tmiExportToText.Size = New System.Drawing.Size(197, 22)
         Me.tmiExportToText.Text = "Export To Text"
         '
         'tmiCreateFromSVNSources
         '
         Me.tmiCreateFromSVNSources.Name = "tmiCreateFromSVNSources"
-        Me.tmiCreateFromSVNSources.Size = New System.Drawing.Size(208, 22)
+        Me.tmiCreateFromSVNSources.Size = New System.Drawing.Size(197, 22)
         Me.tmiCreateFromSVNSources.Text = "Create From SVN Sources"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(205, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(194, 6)
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(80, 37)
+        Me.Label1.Location = New System.Drawing.Point(80, 47)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 2
@@ -217,7 +217,7 @@ Partial Class frmMain
         Me.cboXMLConfFile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboXMLConfFile.BackColor = System.Drawing.SystemColors.Control
-        Me.cboXMLConfFile.Location = New System.Drawing.Point(142, 34)
+        Me.cboXMLConfFile.Location = New System.Drawing.Point(142, 44)
         Me.cboXMLConfFile.Name = "cboXMLConfFile"
         Me.cboXMLConfFile.Size = New System.Drawing.Size(832, 21)
         Me.cboXMLConfFile.TabIndex = 3
@@ -225,7 +225,7 @@ Partial Class frmMain
         'btnOpenConfig
         '
         Me.btnOpenConfig.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnOpenConfig.Location = New System.Drawing.Point(980, 32)
+        Me.btnOpenConfig.Location = New System.Drawing.Point(980, 42)
         Me.btnOpenConfig.Name = "btnOpenConfig"
         Me.btnOpenConfig.Size = New System.Drawing.Size(37, 22)
         Me.btnOpenConfig.TabIndex = 4
