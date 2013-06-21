@@ -54,7 +54,7 @@ Public Class AccessToDotNetForm
         formCode = Replace(formCode, "<__INHERITS__>", Me.getInherits)
 
         formCode = Replace(formCode, "<__ADD_CONTROLS__>", Me.controlAddCode.ToString)
-        formCode = Replace(formCode, "__CONTROL__LAYOUT__", Me.controlLayoutCode.ToString)
+        formCode = Replace(formCode, "<__CONTROL__LAYOUT__>", Me.controlLayoutCode.ToString)
 
         formCode = Replace(formCode, "<__CONTROL__DECL__>", Me.controlDeclarationCode.ToString)
         formCode = Replace(formCode, "<__CONTROL__CREATE__>", Me.controlInstantiationCode.ToString)
