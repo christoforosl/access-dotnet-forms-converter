@@ -43,11 +43,24 @@ Public Class AccessConversionContext
 
     Private _accessApplication As Object 'Access.Application
 
+    Private _dotNetProjectPath As String 'Access.Application
+
     ''' <summary>
-    ''' The root .Net project path to write the produced form files
+    ''' Gets/Sets The root .Net project path to write the produced form files
     ''' </summary>
     Public Property dotNetProjectPath As String
+        Get
+            Return _dotNetProjectPath
+        End Get
+        Set(value As String)
 
+            If Not String.IsNullOrEmpty(value) AndAlso value.EndsWith("\") = False Then
+                value &= "\"
+            End If
+
+            _dotNetProjectPath = value
+        End Set
+    End Property
     ''' <summary>
     ''' The Source access dataabase (ADP or MDB) to convert form(s)
     ''' </summary>
@@ -117,19 +130,20 @@ Public Class AccessConversionContext
         Dim elmnt As XElement = Me.Config.Element("AccessToDotNetConfig")
         Me.dotNetProjectPath = elmnt.Attribute("targetDotNetProjectPath").Value()
 
-        If Me.dotNetProjectPath.EndsWith("\") = False Then
-            Me.dotNetProjectPath &= "\"
-        End If
-
-        If Directory.Exists(Me.dotNetProjectPath) = False Then
-            Console.WriteLine(String.Format("Error: dotNetProjectPath ""{0}"" does not exist.", Me.dotNetProjectPath))
+        If String.IsNullOrEmpty(Me.dotNetProjectPath) = False Then
+            If Directory.Exists(Me.dotNetProjectPath) = False Then
+                Console.WriteLine(String.Format("Error: dotNetProjectPath ""{0}"" does not exist.", Me.dotNetProjectPath))
+            End If
         End If
 
         Me.sourceAccessDatabase = elmnt.Attribute("sourceAccessDatabase").Value()
 
-        If File.Exists(Me.sourceAccessDatabase) = False Then
-            Console.WriteLine(String.Format("Error: sourceAccessDatabase ""{0}"" does not exist.", Me.sourceAccessDatabase))
+        If String.IsNullOrEmpty(Me.sourceAccessDatabase) = False Then
+            If File.Exists(Me.sourceAccessDatabase) = False Then
+                Console.WriteLine(String.Format("Error: sourceAccessDatabase ""{0}"" does not exist.", Me.sourceAccessDatabase))
+            End If
         End If
+
 
         Me.convertedFilesExtension = elmnt.Attribute("fileExtension").Value()
         Me.defaultBaseForm = elmnt.Attribute("defaultBaseForm").Value()
