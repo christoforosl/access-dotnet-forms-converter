@@ -130,6 +130,7 @@ Public Class frmMain
 
         
         AddHandler Me.ucFormList.btnRunConversion.Click, AddressOf RunConversion
+        AddHandler Me.ucFormList.btnRunConversion.Click, AddressOf RefreshFormList
 
     End Sub
 
@@ -401,4 +402,10 @@ Public Class frmMain
         End If
 
     End Sub
+
+
+    Private Sub RefreshFormList(sender As Object, e As EventArgs)
+        Me.ucFormList.lstForms.DataSource = AccessConversionContext.current.getAllAccessForms
+    End Sub
+
 End Class
