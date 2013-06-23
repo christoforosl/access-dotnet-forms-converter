@@ -4,18 +4,28 @@ Steps to convert an Access Project (ADP) or database (MDB)
 
  # Download AccessDotNetConverter zip file, unzip it in a folder, OR checkout project and open it in .net 2010 and Compile it.
  # Make A backup Copy of the MDB/ADP of the MS Access database you want to convert.
- # Run the AccessDotNetConverter.exe.  The first time you run the executable, you will be in "New Project" mode.   You must select the location of your project's configuration file, the dot net project that the system will save generated files.
- # You can edit the [ConfigurationFile Configuration File] as per instructions [ConfigurationFile here]
-and click on choose the configuration file and click "Convert Forms"
+ # Run the AccessDotNetConverter.exe.  The first time you run the executable, you will be in "New Project" mode.  
 
-== Running the program ==
+== Creating a New Project ==
 
-https://msaccess-subversion-control.googlecode.com/svn/wiki/ConverterUI.png
- 
- # The open configuration file of the project.  Click the "..." next to the field to select and load another 
+A "Conversion Project" consists of 3 items of information:
+
+ # The location of the configuration file of the project.
  # The root path to the .Net project that will receive converted forms
- # The source MS Access database
- # List of form names in the source MS Access database. 
+ # The source MS Access database 
+
+After you select these 3 values, you can save the project, from the "File"->"Save Project" menu (Ctrl+S).
+
+This will create the [ConfigurationFile Configuration File] of the project.  You can edit the Configuration File as per instructions [ConfigurationFile here]
+
+
+== The Project Window==
+https://msaccess-subversion-control.googlecode.com/svn/wiki/ConverterUI.png
+
+ # The location of the configuration file of the project.  Click the "..." next to the field to select and load another project.
+ # The root path to the .Net project that will receive converted forms.  Click the "..." next to the field to select another path.
+ # The Source MS Access database. Click the "..." next to the field to select and load another MS Access database.
+ # List of form names in the Source MS Access database. 
  # Button to convert selected forms
  # System Log
 
