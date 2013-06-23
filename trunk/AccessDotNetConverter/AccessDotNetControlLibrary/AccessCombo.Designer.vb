@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class AccessCombo
-    Inherits CGComboBox
+    Inherits ComboBox
 
     'UserControl overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
