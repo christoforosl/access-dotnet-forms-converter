@@ -25,7 +25,7 @@ Partial Class ucFormList
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ucFormList))
         Me.tspMain = New System.Windows.Forms.ToolStrip()
         Me.btnRunConversion = New System.Windows.Forms.ToolStripButton()
-        Me.btnButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.btnRefresh = New System.Windows.Forms.ToolStripButton()
         Me.btnButton3 = New System.Windows.Forms.ToolStripButton()
         Me.lstForms = New System.Windows.Forms.ListBox()
         Me.tspMain.SuspendLayout()
@@ -33,29 +33,29 @@ Partial Class ucFormList
         '
         'tspMain
         '
-        Me.tspMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnRunConversion, Me.btnButton2, Me.btnButton3})
+        Me.tspMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnRunConversion, Me.btnRefresh, Me.btnButton3})
         Me.tspMain.Location = New System.Drawing.Point(0, 0)
         Me.tspMain.Name = "tspMain"
         Me.tspMain.Size = New System.Drawing.Size(274, 25)
         Me.tspMain.TabIndex = 2
         Me.tspMain.Text = "ToolStrip1"
         '
-        'btnCreateWorkFile
+        'btnRunConversion
         '
-        Me.btnRunConversion.Image = CType(resources.GetObject("btnCreateWorkFile.Image"), System.Drawing.Image)
+        Me.btnRunConversion.Image = CType(resources.GetObject("btnRunConversion.Image"), System.Drawing.Image)
         Me.btnRunConversion.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnRunConversion.Name = "btnCreateWorkFile"
+        Me.btnRunConversion.Name = "btnRunConversion"
         Me.btnRunConversion.Size = New System.Drawing.Size(105, 22)
         Me.btnRunConversion.Text = "Convert Forms"
         '
-        'btnButton2
+        'btnRefresh
         '
-        Me.btnButton2.Image = CType(resources.GetObject("btnButton2.Image"), System.Drawing.Image)
-        Me.btnButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnButton2.Name = "btnButton2"
-        Me.btnButton2.Size = New System.Drawing.Size(69, 22)
-        Me.btnButton2.Text = "Button2"
-        Me.btnButton2.Visible = False
+        Me.btnRefresh.Image = CType(resources.GetObject("btnRefresh.Image"), System.Drawing.Image)
+        Me.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(66, 22)
+        Me.btnRefresh.Text = "Refresh"
+        Me.btnRefresh.ToolTipText = "Refresh MS Access database forms"
         '
         'btnButton3
         '
@@ -76,13 +76,13 @@ Partial Class ucFormList
         Me.lstForms.Size = New System.Drawing.Size(274, 200)
         Me.lstForms.TabIndex = 12
         '
-        'usFormList
+        'ucFormList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.lstForms)
         Me.Controls.Add(Me.tspMain)
-        Me.Name = "usFormList"
+        Me.Name = "ucFormList"
         Me.Size = New System.Drawing.Size(274, 225)
         Me.tspMain.ResumeLayout(False)
         Me.tspMain.PerformLayout()
@@ -92,7 +92,7 @@ Partial Class ucFormList
     End Sub
     Public WithEvents tspMain As System.Windows.Forms.ToolStrip
     Public WithEvents btnRunConversion As System.Windows.Forms.ToolStripButton
-    Public WithEvents btnButton2 As System.Windows.Forms.ToolStripButton
+    Public WithEvents btnRefresh As System.Windows.Forms.ToolStripButton
     Public WithEvents btnButton3 As System.Windows.Forms.ToolStripButton
     Public WithEvents lstForms As System.Windows.Forms.ListBox
 

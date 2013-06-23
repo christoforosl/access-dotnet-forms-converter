@@ -39,8 +39,6 @@ Partial Class frmMain
         Me.tmiSep1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tmiExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tmiExportToText = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tmiCreateFromSVNSources = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cboXMLConfFile = New System.Windows.Forms.ComboBox()
@@ -143,65 +141,53 @@ Partial Class frmMain
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNewProject, Me.tsmiOpenProject, Me.tsmiSave, Me.tmiSep1, Me.tmiExit})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'tsNewProject
         '
         Me.tsNewProject.Name = "tsNewProject"
         Me.tsNewProject.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.tsNewProject.Size = New System.Drawing.Size(177, 22)
+        Me.tsNewProject.Size = New System.Drawing.Size(186, 22)
         Me.tsNewProject.Text = "&New Project"
         '
         'tsmiOpenProject
         '
         Me.tsmiOpenProject.Name = "tsmiOpenProject"
         Me.tsmiOpenProject.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.tsmiOpenProject.Size = New System.Drawing.Size(177, 22)
+        Me.tsmiOpenProject.Size = New System.Drawing.Size(186, 22)
         Me.tsmiOpenProject.Text = "&Open Project"
         '
         'tsmiSave
         '
         Me.tsmiSave.Name = "tsmiSave"
         Me.tsmiSave.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.tsmiSave.Size = New System.Drawing.Size(177, 22)
+        Me.tsmiSave.Size = New System.Drawing.Size(186, 22)
         Me.tsmiSave.Text = "Save &Project"
         '
         'tmiSep1
         '
         Me.tmiSep1.Name = "tmiSep1"
-        Me.tmiSep1.Size = New System.Drawing.Size(174, 6)
+        Me.tmiSep1.Size = New System.Drawing.Size(183, 6)
         '
         'tmiExit
         '
         Me.tmiExit.Name = "tmiExit"
         Me.tmiExit.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
-        Me.tmiExit.Size = New System.Drawing.Size(177, 22)
+        Me.tmiExit.Size = New System.Drawing.Size(186, 22)
         Me.tmiExit.Text = "E&xit"
         '
         'ToolStripMenuItem1
         '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiExportToText, Me.tmiCreateFromSVNSources, Me.ToolStripSeparator1})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator1})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(54, 20)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(59, 20)
         Me.ToolStripMenuItem1.Text = "Actions"
-        '
-        'tmiExportToText
-        '
-        Me.tmiExportToText.Name = "tmiExportToText"
-        Me.tmiExportToText.Size = New System.Drawing.Size(197, 22)
-        Me.tmiExportToText.Text = "Export To Text"
-        '
-        'tmiCreateFromSVNSources
-        '
-        Me.tmiCreateFromSVNSources.Name = "tmiCreateFromSVNSources"
-        Me.tmiCreateFromSVNSources.Size = New System.Drawing.Size(197, 22)
-        Me.tmiCreateFromSVNSources.Text = "Create From SVN Sources"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(194, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(57, 6)
         '
         'Label1
         '
@@ -292,8 +278,6 @@ Partial Class frmMain
     Friend WithEvents tsmiOpenProject As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiExit As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tmiExportToText As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tmiCreateFromSVNSources As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsNewProject As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiSave As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiSep1 As System.Windows.Forms.ToolStripSeparator
