@@ -3,9 +3,10 @@
 Steps to convert an Access Project (ADP) or database (MDB)
 
  # Download AccessDotNetConverter zip file, unzip it in a folder, OR checkout project and open it in .net 2010 and Compile it.
- # Make A backup Copy of the MDB/ADP of your access database
- # Create the [ConfigurationFile Configuration File]
- # Run the AccessDotNetConverter.EXE, choose the configuration file and click "Convert Forms"
+ # Make A backup Copy of the MDB/ADP of the MS Access database you want to convert.
+ # Run the AccessDotNetConverter.exe.  The first time you run the executable, you will be in "New Project" mode.   You must select the location of your project's configuration file, the dot net project that the system will save generated files.
+ # You can edit the [ConfigurationFile Configuration File] as per instructions [ConfigurationFile here]
+and click on choose the configuration file and click "Convert Forms"
 
 == Running the program ==
 
