@@ -115,9 +115,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccessDotNetControlLibrary\AccessDotNetControlLibrary.vbproj">
+    <ProjectReference Include="..\AccessDotNetControlLibrary\ConvertedMSAccessControlsLibrary.vbproj">
       <Project>{38F0E833-B154-4DA5-BE93-9AB8EF86B652}</Project>
-      <Name>AccessDotNetControlLibrary</Name>
+      <Name>ConvertedMSAccessControlsLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 ''' </summary>
 Public Class AccessConversionContext
 
-    Public Const DEFAULT_CONFIG_FILE As String = ".\sampleProject.xml"
+    Public Const DEFAULT_CONFIG_FILE As String = "defaultProjectConfig.xml"
 
     ''' <summary>
     ''' The current access form being converted
