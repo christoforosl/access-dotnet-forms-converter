@@ -28,25 +28,26 @@ The root element "AccessToDotNetConfig" specifies the following:
                 dotnetType="System.Windows.Forms.Form" 
                 handler="AccessDotNetConverter.AccessToDotNetForm" />
 
-     <!-- The rule below will apply to all forms with name frmListX. Note that 
-          the "dotnetType" attribute below will cause all forms that match the regular 
+     <!-- Note that it is possible to specify rules by name, like the example below.
+          which will apply to all forms with name frmList<WhatEver>. In effect, the rule
+          below will cause all forms whose name matches the regular 
           expression to inherit from "org.codegen.win.controls.frmBaseGrid"-->
-     <controlmap accessType="acForm" nameMatch="^frmList*"
+     <!--controlmap accessType="acForm" nameMatch="^frmList*"
                  dotnetType="org.codegen.win.controls.frmBaseGrid" 
-                 handler="AccessDotNetConverter.AccessToDotNetForm">
+                 handler="AccessDotNetConverter.AccessToDotNetForm"-->
        
        <!-- All forms that match the regular expression above will inherit from "org.codegen.win.controls.frmBaseGrid"
-       has a Panel named "Me.pnlGrid" and all converted controls should be added to this control. -->
-       <rootControl>Me.pnlGrid</rootControl>
+       has a Panel named "Me.pnlGrid" and all "roor" converted controls should be added to this control. -->
+     <!--rootControl>Me.pnlGrid</rootControl-->
        
-     </controlmap>
+
 
      <!-- below maps are for controls that we handle.  Any access control not appearing below in the accessType attribute 
      will not be converted -->
      <controlmap accessType="acTextBox" dotnetType="Textbox" handler="AccessDotNetConverter.AccessToDotNetTextbox" />
     
-    <controlmap accessType="acComboBox" dotnetType="AccessCombo" handler="AccessDotNetConverter.AccessToDotNetCombo"  />
-    <controlmap accessType="acListBox" dotnetType="AccessListBox" handler="AccessDotNetConverter.AccessToDotNetListbox"  />
+    <controlmap accessType="acComboBox" dotnetType="ConvertedMSAccessControls.AccessCombo" handler="AccessDotNetConverter.AccessToDotNetCombo"  />
+    <controlmap accessType="acListBox" dotnetType="ConvertedMSAccessControls.AccessListBox" handler="AccessDotNetConverter.AccessToDotNetListbox"  />
 
     <controlmap accessType="acLabel" dotnetType="Label" handler="AccessDotNetConverter.AccessToDotNetLabel" />
     <controlmap accessType="acCommandButton" dotnetType="System.Windows.Forms.Button" handler="AccessDotNetConverter.AccessToDotNetCommandButton"/>

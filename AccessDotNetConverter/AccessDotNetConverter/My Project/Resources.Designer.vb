@@ -59,5 +59,23 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        '''&lt;!-- 
+        '''This configuration file is also the default config file of the application. if none is specified, this will be used.
+        '''The &quot;sourceAccessDatabase&quot; and &quot;targetDotNetProjectPath&quot; can be overwritten by selecting the path from frmMain form.
+        '''
+        '''The root element &quot;AccessToDotNetConfig&quot; specifies the following:
+        '''
+        '''1. fileExtension : .cs or .vb
+        '''2. sourceAccessDatabase : The source MS Access database
+        '''3. defaultBaseForm: The base form that all converted forms will inheri [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property defaultProjectConfig() As String
+            Get
+                Return ResourceManager.GetString("defaultProjectConfig", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

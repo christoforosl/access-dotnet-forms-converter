@@ -11,7 +11,7 @@ Public Class frmMain
     Private Const STR_REG_SECTION As String = "Settings"
     Private Const INT_MAX_REMEMBERED_FILES As Integer = 10
 
-    Private ReadOnly FI_DEFAULT_CONFIG As FileInfo = New FileInfo(AccessConversionContext.DEFAULT_CONFIG_FILE)
+    ' Private ReadOnly FI_DEFAULT_CONFIG As FileInfo = New FileInfo(AccessConversionContext.DEFAULT_CONFIG_FILE)
 
     Private writer As TextBoxWriter = Nothing
 
@@ -36,19 +36,20 @@ Public Class frmMain
         sfdSaveConfig.ShowDialog()
 
         If sfdSaveConfig.FileName = "" Then Exit Sub
-        If New FileInfo(sfdSaveConfig.FileName).FullName = FI_DEFAULT_CONFIG.FullName Then
-            MsgBox("Cannot save to default config file. Please select another file.", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
+       
         If File.Exists(sfdSaveConfig.FileName) Then
             File.Delete(sfdSaveConfig.FileName)
         End If
 
-        Dim x As XDocument = XDocument.Load(FI_DEFAULT_CONFIG.FullName)
-        x.Document.Element("AccessToDotNetConfig").Attribute("targetDotNetProjectPath").Value = ""
-        x.Document.Element("AccessToDotNetConfig").Attribute("sourceAccessDatabase").Value = ""
 
-        x.Save(sfdSaveConfig.FileName)
+        Using tr As New StringReader(My.Resources.defaultProjectConfig)
+            Dim x As XDocument
+            x = XDocument.Load(tr)
+            x.Document.Element("AccessToDotNetConfig").Attribute("targetDotNetProjectPath").Value = ""
+            x.Document.Element("AccessToDotNetConfig").Attribute("sourceAccessDatabase").Value = ""
+            x.Save(sfdSaveConfig.FileName)
+
+        End Using
 
         Me.cboXMLConfFile.Items.Add(sfdSaveConfig.FileName)
         Me.cboXMLConfFile.Text = sfdSaveConfig.FileName
@@ -120,22 +121,15 @@ Public Class frmMain
             End If
         Next
 
-        If Me.cboXMLConfFile.Items.Count = 0 Then
+        If Me.cboXMLConfFile.Items.Count > 0 Then
+            Me.cboXMLConfFile.SelectedItem = Me.cboXMLConfFile.Items(0)
 
-            Me.cboXMLConfFile.Items.Add(FI_DEFAULT_CONFIG.FullName)
-            'Else
-            '    Console.WriteLine("Will Load DEFAULT config file from {0}", FI_DEFAULT_CONFIG.FullName)
-            '    'make sure that the "converted" folder exists.
-            '    If Directory.Exists(".\Converted\") = False Then
-            '        Directory.CreateDirectory(".\Converted\")
-            '        Console.WriteLine("Created directory {0}.", New DirectoryInfo(".\Converted\").FullName)
-            '    End If
-            '    Me.loadConfigurationFile(FI_DEFAULT_CONFIG.FullName)
+            ' Me.cboXMLConfFile.Items.Add(FI_DEFAULT_CONFIG.FullName)
+
 
         End If
 
-        Me.cboXMLConfFile.SelectedItem = Me.cboXMLConfFile.Items(0)
-
+        
         AddHandler Me.ucFormList.btnRunConversion.Click, AddressOf RunConversion
 
     End Sub
@@ -162,7 +156,7 @@ Public Class frmMain
         'if the config loaded is the default config, select another name
         Dim thisConfigFile As String = AccessConversionContext.current.configFile
 
-        If New FileInfo(AccessConversionContext.current.configFile).FullName = FI_DEFAULT_CONFIG.FullName Then
+        If String.IsNullOrEmpty(Me.cboXMLConfFile.Text) Then
 
             sfdSaveConfig.AddExtension = True
             ofSelectFile.Filter = "XML Project File|*.xml|All Files|*.*"
@@ -173,10 +167,7 @@ Public Class frmMain
 
 
             If sfdSaveConfig.FileName = "" Then Exit Sub
-            If New FileInfo(sfdSaveConfig.FileName).FullName = FI_DEFAULT_CONFIG.FullName Then
-                MsgBox("Cannot save to default config file. Please select another file.", MsgBoxStyle.Critical)
-                Exit Sub
-            End If
+            
             thisConfigFile = sfdSaveConfig.FileName
         End If
 

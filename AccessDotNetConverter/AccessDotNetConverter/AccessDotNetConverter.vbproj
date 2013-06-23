@@ -223,10 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="exportPicture.bas.txt" />
-    <Content Include="sampleProject.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="defaultProjectConfig.xml">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <Content Include="COPYING.txt" />
     <Content Include="testdatabase.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
