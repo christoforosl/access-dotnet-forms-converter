@@ -227,9 +227,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="COPYING.txt" />
-    <Content Include="testdatabase.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="VBNetFormTemplate.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

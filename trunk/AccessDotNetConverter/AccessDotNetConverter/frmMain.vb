@@ -41,7 +41,6 @@ Public Class frmMain
             File.Delete(sfdSaveConfig.FileName)
         End If
 
-
         Using tr As New StringReader(My.Resources.defaultProjectConfig)
             Dim x As XDocument
             x = XDocument.Load(tr)
