@@ -101,6 +101,18 @@
     <Compile Include="convertedForms\FrmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="convertedForms\FrmCompany.Designer.vb">
+      <DependentUpon>FrmCompany.vb</DependentUpon>
+    </Compile>
+    <Compile Include="convertedForms\FrmCompany.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="convertedForms\FrmEmployee.Designer.vb">
+      <DependentUpon>FrmEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="convertedForms\FrmEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="convertedForms\FrmListEmployee.Designer.vb">
       <DependentUpon>FrmListEmployee.vb</DependentUpon>
     </Compile>

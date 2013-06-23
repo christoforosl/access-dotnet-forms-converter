@@ -60,8 +60,8 @@ Me.DataListCount.Size = New System.Drawing.Size(64, 15)
 Me.DataListCount.Visible=True
 me.DataListCount.TabIndex = 8
 me.DataListCount.Font = New System.Drawing.Font("Tahoma", 8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-me.DataListCount.ReadOnly = True
 me.DataListCount.backcolor =me.backcolor
+me.DataListCount.ReadOnly = True
 Me.DataListCount.TextAlign=HorizontalAlignment.Left
 
 
