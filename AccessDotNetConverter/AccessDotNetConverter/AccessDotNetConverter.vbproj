@@ -264,10 +264,16 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccessDotNetControlLibrary\ConvertedMSAccessControlsLibrary.vbproj">
+      <Project>{38F0E833-B154-4DA5-BE93-9AB8EF86B652}</Project>
+      <Name>ConvertedMSAccessControlsLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>rem del C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip
-rem  "C:\Program Files\7-Zip\7z" a C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip $(TargetDir)\*.* -x!*vshost* -x!*.tmp  -x!*.pdb</PostBuildEvent>
+    <PostBuildEvent>del C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip
+"C:\Program Files\7-Zip\7z" a C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip $(TargetDir)\*.* -x!*vshost* -x!*.tmp  -x!*.pdb</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
