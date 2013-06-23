@@ -22,26 +22,49 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.PnlHeader = New System.Windows.Forms.Panel()
+        Me.pnlFooter = New System.Windows.Forms.Panel()
+        Me.pnlDetailSection = New System.Windows.Forms.Panel()
         Me.SuspendLayout()
         '
-        'DateTimePicker1
+        'PnlHeader
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(83, 12)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimePicker1.TabIndex = 0
+        Me.PnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PnlHeader.Location = New System.Drawing.Point(0, 0)
+        Me.PnlHeader.Name = "PnlHeader"
+        Me.PnlHeader.Size = New System.Drawing.Size(594, 71)
+        Me.PnlHeader.TabIndex = 0
+        '
+        'pnlFooter
+        '
+        Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.pnlFooter.Location = New System.Drawing.Point(0, 249)
+        Me.pnlFooter.Name = "pnlFooter"
+        Me.pnlFooter.Size = New System.Drawing.Size(594, 62)
+        Me.pnlFooter.TabIndex = 2
+        '
+        'pnlDetailSection
+        '
+        Me.pnlDetailSection.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlDetailSection.Location = New System.Drawing.Point(0, 71)
+        Me.pnlDetailSection.Name = "pnlDetailSection"
+        Me.pnlDetailSection.Size = New System.Drawing.Size(594, 178)
+        Me.pnlDetailSection.TabIndex = 3
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 262)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.ClientSize = New System.Drawing.Size(594, 311)
+        Me.Controls.Add(Me.pnlDetailSection)
+        Me.Controls.Add(Me.pnlFooter)
+        Me.Controls.Add(Me.PnlHeader)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents PnlHeader As System.Windows.Forms.Panel
+    Friend WithEvents pnlFooter As System.Windows.Forms.Panel
+    Friend WithEvents pnlDetailSection As System.Windows.Forms.Panel
 End Class
