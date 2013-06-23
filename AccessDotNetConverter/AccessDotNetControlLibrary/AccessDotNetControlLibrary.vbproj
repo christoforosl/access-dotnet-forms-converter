@@ -9,8 +9,8 @@
     </SchemaVersion>
     <ProjectGuid>{38F0E833-B154-4DA5-BE93-9AB8EF86B652}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AccessDotNetControlLibrary</RootNamespace>
-    <AssemblyName>AccessDotNetControlLibrary</AssemblyName>
+    <RootNamespace>ConvertedMSAccessControls</RootNamespace>
+    <AssemblyName>ConvertedMSAccessControls</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -22,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>AccessDotNetControlLibrary.xml</DocumentationFile>
+    <DocumentationFile>ConvertedMSAccessControls.xml</DocumentationFile>
     <DefineConstants>_MYFORMS=True</DefineConstants>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
@@ -32,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>AccessDotNetControlLibrary.xml</DocumentationFile>
+    <DocumentationFile>ConvertedMSAccessControls.xml</DocumentationFile>
     <DefineConstants>_MYFORMS=True</DefineConstants>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
@@ -74,7 +74,9 @@
     <Compile Include="AccessCombo.Designer.vb">
       <DependentUpon>AccessCombo.vb</DependentUpon>
     </Compile>
-    <Compile Include="AccessCombo.vb" />
+    <Compile Include="AccessCombo.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AccessListBox.Designer.vb">
       <DependentUpon>AccessListBox.vb</DependentUpon>
     </Compile>
