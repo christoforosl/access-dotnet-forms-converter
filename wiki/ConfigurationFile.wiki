@@ -3,7 +3,7 @@
 = The Configuration controls the conversion process. =
 
 Browse the XSD file
-[https://code.google.com/p/access-dotnet-forms-converter/source/browse/AccessSVNTool/trunk/AccessDotNetConverter/AccessToDotNetControlMap.xsd here]
+[https://code.google.com/p/access-dotnet-forms-converter/source/browse/trunk/AccessDotNetConverter/AccessDotNetConverter/AccessToDotNetControlMap.xsd here]
 
 A Sample file can be found 
-[https://code.google.com/p/access-dotnet-forms-converter/source/browse/AccessSVNTool/trunk/AccessDotNetConverter/AccessToDotNetControlMap.xml here] with instructions enbedded.
+[https://code.google.com/p/access-dotnet-forms-converter/source/browse/trunk/AccessDotNetConverter/AccessDotNetConverter/defaultProjectConfig.xml here] with instructions enbedded.
