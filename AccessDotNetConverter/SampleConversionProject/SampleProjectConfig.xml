@@ -56,7 +56,11 @@ The root element "AccessToDotNetConfig" specifies the following:
     <controlmap accessType="acPage" dotnetType="System.Windows.Forms.TabPage"  handler="AccessDotNetConverter.AccessToDotNetTabPage"/>
     <controlmap accessType="acCheckBox" dotnetType="System.Windows.Forms.Checkbox" handler="AccessDotNetConverter.AccessToDotNetCheckbox" />
 
-     <controlmap accessType="acImage"
+     <controlmap accessType="acCustomControl" nameMatch="dataGridCntrl"
+                 dotnetType="System.Windows.Forms.DataGridView"
+                 handler="AccessDotNetConverter.AccessToDotDatagridConverter" />
+     
+    <controlmap accessType="acImage"
 					dotnetType="System.Windows.Forms.PictureBox"
 					handler="AccessDotNetConverter.AccessToDotNetImage" />
      

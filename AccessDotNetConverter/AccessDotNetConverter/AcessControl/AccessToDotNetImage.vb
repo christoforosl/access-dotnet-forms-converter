@@ -1,5 +1,4 @@
 Imports System.Text
-Imports Microsoft.Office.Interop
 
 Public Class AccessToDotNetImage
     Inherits AccessToDotNetControl

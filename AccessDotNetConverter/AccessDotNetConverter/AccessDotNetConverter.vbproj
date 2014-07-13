@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessConversionContext.vb" />
+    <Compile Include="AcessControl\AccessToDotDatagridConverter.vb" />
     <Compile Include="AcessControl\AccessToDotNetCheckbox.vb" />
     <Compile Include="AcessControl\AccessToDotNetCombo.vb" />
     <Compile Include="AcessControl\AccessCommandButton.vb" />
