@@ -15,8 +15,7 @@ Public Class AccessControlFactory
         For Each elmnt As XElement In lXElements
             '[Enum].Parse(Access.AcControlType.
 
-            Dim ctrlType As String = _
-                    [Enum].GetName(GetType(AcControlType), accessControl.controltype)
+            Dim ctrlType As String = [Enum].GetName(GetType(AcControlType), accessControl.controltype)
 
             If ctrlType = elmnt.Attribute("accessType").Value Then
 
@@ -25,8 +24,18 @@ Public Class AccessControlFactory
                     If String.IsNullOrEmpty(elmnt.Attribute("handler").Value) Then
                         'return nothing: ie we do not handle this control
                     Else
-                        Dim handlerClass As String = elmnt.Attribute("handler").Value
-                        ret = Activator.CreateInstance(Type.GetType(handlerClass))
+                        If elmnt.Attribute("nameMatch") IsNot Nothing AndAlso _
+                                (Not String.IsNullOrEmpty(elmnt.Attribute("nameMatch").Value)) Then
+                            Dim regex As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex(elmnt.Attribute("nameMatch").Value)
+                            If regex.IsMatch(accessControl.name) Then
+                                Dim handlerClass As String = elmnt.Attribute("handler").Value
+                                ret = Activator.CreateInstance(Type.GetType(handlerClass))
+                            End If
+                        Else
+                            Dim handlerClass As String = elmnt.Attribute("handler").Value
+                            ret = Activator.CreateInstance(Type.GetType(handlerClass))
+                        End If
+
                     End If
 
                 Else

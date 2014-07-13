@@ -101,6 +101,12 @@
     <Compile Include="convertedForms\FrmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="convertedForms\FrmChooseDB.Designer.vb">
+      <DependentUpon>FrmChooseDB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="convertedForms\FrmChooseDB.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="convertedForms\FrmCompany.Designer.vb">
       <DependentUpon>FrmCompany.vb</DependentUpon>
     </Compile>
@@ -117,6 +123,18 @@
       <DependentUpon>FrmListEmployee.vb</DependentUpon>
     </Compile>
     <Compile Include="convertedForms\FrmListEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="convertedForms\FrmExportData.Designer.vb">
+      <DependentUpon>FrmExportData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="convertedForms\FrmExportData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="convertedForms\FrmListPayrollItem.Designer.vb">
+      <DependentUpon>FrmListPayrollItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="convertedForms\FrmListPayrollItem.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.vb">
@@ -143,6 +161,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="convertedForms\FrmChooseDB.resx">
+      <DependentUpon>FrmChooseDB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="convertedForms\FrmExportData.resx">
+      <DependentUpon>FrmExportData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="convertedForms\FrmListPayrollItem.resx">
+      <DependentUpon>FrmListPayrollItem.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>

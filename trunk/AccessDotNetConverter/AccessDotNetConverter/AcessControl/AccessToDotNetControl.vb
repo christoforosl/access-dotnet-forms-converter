@@ -69,7 +69,7 @@ Public Class AccessToDotNetControl
         For Each currentControl As Object In controlsCollection
             Dim adc As AccessToDotNetControl = AccessControlFactory.getAccessToDotNetControl(currentControl)
             If adc Is Nothing Then
-                Console.WriteLine("Control {0} of type {1} not handled", _
+                Console.WriteLine("Control name ""{0}"" of type ""{1}"" not handled", _
                                 currentControl.name, _
                                 currentControl.controltype)
             Else
@@ -352,7 +352,8 @@ Public Class AccessToDotNetControl
                     Me.acControlType <> acControlType.acRectangle AndAlso _
                      Me.acControlType <> acControlType.acImage AndAlso _
                     Me.acControlType <> acControlType.acOptionGroup AndAlso _
-                    Me.acControlType <> acControlType.acPage
+                    Me.acControlType <> acControlType.acPage AndAlso _
+                    Me.acControlType <> acControlType.acCustomControl
 
     End Function
 
