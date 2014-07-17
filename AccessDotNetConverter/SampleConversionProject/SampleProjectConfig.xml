@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 This configuration file is also the default config file of the application. if none is specified, this will be used.
 The "sourceAccessDatabase" and "targetDotNetProjectPath" can be overwritten by selecting the path from frmMain form.
@@ -12,67 +12,35 @@ The root element "AccessToDotNetConfig" specifies the following:
 5. targetDotNetProjectPath : The root path to place converted files
 
 -->
-<AccessToDotNetConfig
-	  fileExtension="vb"
-    sourceAccessDatabase="..\..\..\SampleConversionProject\testdatabase.mdb"
-    defaultBaseForm="System.Windows.Forms.Form"
-    namingHandler="AccessDotNetConverter.DefaultNameHandler"
-    defaultBaseFormTemplate=".\VBNetFormTemplate.txt"
-	  targetDotNetProjectPath="..\..\..\SampleConversionProject\ConvertedForms\">
-
-   <controlmaps>
+<AccessToDotNetConfig fileExtension="vb" sourceAccessDatabase="C:\VSProjects\PayrollFormsConversion\IntermediaryDatabase.mdb" defaultBaseForm="System.Windows.Forms.Form" namingHandler="AccessDotNetConverter.DefaultNameHandler" defaultBaseFormTemplate=".\VBNetFormTemplate.txt" targetDotNetProjectPath="C:\VSProjects\PayrollFormsConversion\convertedForms">
+  <controlmaps>
     <!-- The rule below tells the system that by default all Forms will inherit "System.Windows.Forms.Form" and 
     the handler will be the class AccessDotNetConverter.AccessToDotNetForm 
     -->
-    <controlmap accessType="acForm" 
-                dotnetType="System.Windows.Forms.Form" 
-                handler="AccessDotNetConverter.AccessToDotNetForm" />
-
-     <!-- Note that it is possible to specify rules by name, like the example below.
+    <controlmap accessType="acForm" dotnetType="System.Windows.Forms.Form" handler="AccessDotNetConverter.AccessToDotNetForm" />
+    <!-- Note that it is possible to specify rules by name, like the example below.
           which will apply to all forms with name frmList<WhatEver>. In effect, the rule
           below will cause all forms whose name matches the regular 
           expression to inherit from "org.codegen.win.controls.frmBaseGrid"-->
-     <!--controlmap accessType="acForm" nameMatch="^frmList*"
+    <!--controlmap accessType="acForm" nameMatch="^frmList*"
                  dotnetType="org.codegen.win.controls.frmBaseGrid" 
                  handler="AccessDotNetConverter.AccessToDotNetForm"-->
-       
-       <!-- All forms that match the regular expression above will inherit from "org.codegen.win.controls.frmBaseGrid"
+    <!-- All forms that match the regular expression above will inherit from "org.codegen.win.controls.frmBaseGrid"
        has a Panel named "Me.pnlGrid" and all "roor" converted controls should be added to this control. -->
-     <!--rootControl>Me.pnlGrid</rootControl-->
-       
-
-
-     <!-- below maps are for controls that we handle.  Any access control not appearing below in the accessType attribute 
+    <!--rootControl>Me.pnlGrid</rootControl-->
+    <!-- below maps are for controls that we handle.  Any access control not appearing below in the accessType attribute 
      will not be converted -->
-     <controlmap accessType="acTextBox" dotnetType="Textbox" handler="AccessDotNetConverter.AccessToDotNetTextbox" />
-    
-    <controlmap accessType="acComboBox" dotnetType="ConvertedMSAccessControls.AccessCombo" handler="AccessDotNetConverter.AccessToDotNetCombo"  />
-    <controlmap accessType="acListBox" dotnetType="ConvertedMSAccessControls.AccessListBox" handler="AccessDotNetConverter.AccessToDotNetListbox"  />
-
+    <controlmap accessType="acTextBox" dotnetType="Textbox" handler="AccessDotNetConverter.AccessToDotNetTextbox" />
+    <controlmap accessType="acComboBox" dotnetType="ConvertedMSAccessControls.AccessCombo" handler="AccessDotNetConverter.AccessToDotNetCombo" />
+    <controlmap accessType="acListBox" dotnetType="ConvertedMSAccessControls.AccessListBox" handler="AccessDotNetConverter.AccessToDotNetListbox" />
     <controlmap accessType="acLabel" dotnetType="Label" handler="AccessDotNetConverter.AccessToDotNetLabel" />
-    <controlmap accessType="acCommandButton" dotnetType="System.Windows.Forms.Button" handler="AccessDotNetConverter.AccessToDotNetCommandButton"/>
-    
-    <controlmap accessType="acTabCtl" dotnetType="System.Windows.Forms.TabControl"  handler="AccessDotNetConverter.AccessToDotNetTab"/>
-    <controlmap accessType="acPage" dotnetType="System.Windows.Forms.TabPage"  handler="AccessDotNetConverter.AccessToDotNetTabPage"/>
+    <controlmap accessType="acCommandButton" dotnetType="System.Windows.Forms.Button" handler="AccessDotNetConverter.AccessToDotNetCommandButton" />
+    <controlmap accessType="acTabCtl" dotnetType="System.Windows.Forms.TabControl" handler="AccessDotNetConverter.AccessToDotNetTab" />
+    <controlmap accessType="acPage" dotnetType="System.Windows.Forms.TabPage" handler="AccessDotNetConverter.AccessToDotNetTabPage" />
     <controlmap accessType="acCheckBox" dotnetType="System.Windows.Forms.Checkbox" handler="AccessDotNetConverter.AccessToDotNetCheckbox" />
-
-     <controlmap accessType="acCustomControl" nameMatch="dataGridCntrl"
-                 dotnetType="System.Windows.Forms.DataGridView"
-                 handler="AccessDotNetConverter.AccessToDotDatagridConverter" />
-     
-    <controlmap accessType="acImage"
-					dotnetType="System.Windows.Forms.PictureBox"
-					handler="AccessDotNetConverter.AccessToDotNetImage" />
-     
-     <controlmap accessType="acOptionGroup" 
-					dotnetType="System.Windows.Forms.GroupBox" 
-					handler="AccessDotNetConverter.AccessToDotNetControl" /> 
-
-    <controlmap accessType="acRectangle"
-					dotnetType="System.Windows.Forms.GroupBox"
-					handler="AccessDotNetConverter.AccessToDotNetControl" /> 
-    
-	
+    <controlmap accessType="acCustomControl" nameMatch="dataGridCntrl" dotnetType="System.Windows.Forms.DataGridView" handler="AccessDotNetConverter.AccessToDotDatagridConverter" />
+    <controlmap accessType="acImage" dotnetType="System.Windows.Forms.PictureBox" handler="AccessDotNetConverter.AccessToDotNetImage" />
+    <controlmap accessType="acOptionGroup" dotnetType="System.Windows.Forms.GroupBox" handler="AccessDotNetConverter.AccessToDotNetControl" />
+    <controlmap accessType="acRectangle" dotnetType="System.Windows.Forms.GroupBox" handler="AccessDotNetConverter.AccessToDotNetControl" />
   </controlmaps>
-
 </AccessToDotNetConfig>
