@@ -7,6 +7,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AccessDotNetConverter", "Ac
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConvertedMSAccessControlsLibrary", "AccessDotNetControlLibrary\ConvertedMSAccessControlsLibrary.vbproj", "{38F0E833-B154-4DA5-BE93-9AB8EF86B652}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PayrollFormsConversion", "..\PayrollFormsConversion\PayrollFormsConversion.vbproj", "{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,18 @@ Global
 		{38F0E833-B154-4DA5-BE93-9AB8EF86B652}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{38F0E833-B154-4DA5-BE93-9AB8EF86B652}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{38F0E833-B154-4DA5-BE93-9AB8EF86B652}.Release|x86.ActiveCfg = Release|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Debug|x86.ActiveCfg = Debug|x86
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Debug|x86.Build.0 = Debug|x86
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Release|x86.ActiveCfg = Release|x86
+		{5C3FBBF7-C41A-40E4-B56E-171A5A9C3BAE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
