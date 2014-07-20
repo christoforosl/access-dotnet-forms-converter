@@ -76,7 +76,8 @@ Public Class AccessToDotNetForm
                     If regex.IsMatch(Me.accessControl.name) Then
                         Return mapo.Attribute("dotnetType").Value
                     End If
-
+                Else
+                    Return mapo.Attribute("dotnetType").Value
                 End If
             End If
         Next
@@ -97,40 +98,6 @@ Public Class AccessToDotNetForm
         End Get
     End Property
 
-    Private _dotnetParentControlName As String = Nothing
-    ''' <summary>
-    ''' Used by getControlAddToContainerCode method
-    ''' </summary>
-    Public Overrides ReadOnly Property dotnetParentControlName As String
-        Get
-            If _dotnetParentControlName Is Nothing Then
-                Dim x As XDocument = AccessConversionContext.current.Config
-                Dim configElement As XElement = x.Element("AccessToDotNetConfig").Element("controlmaps")
-
-                For Each mapo As XElement In configElement.Elements
-                    If [Enum].Parse(acControlType.GetType, mapo.Attribute("accessType")) = acControlType.acForm Then
-                        If mapo.Attribute("nameMatch") IsNot Nothing Then
-                            Dim regex As Regex = New Regex(mapo.Attribute("nameMatch").Value)
-                            If regex.IsMatch(Me.accessControl.name) Then
-                                _dotnetParentControlName = mapo.Element("rootControl").Value
-                            End If
-
-                        End If
-                    End If
-                Next
-
-                If _dotnetParentControlName Is Nothing Then
-                    _dotnetParentControlName = "Me"
-                End If
-
-                If _dotnetParentControlName.EndsWith(".") Then
-                    _dotnetParentControlName.Substring(0, _dotnetParentControlName.Length - 1)
-                End If
-
-            End If
-
-            Return _dotnetParentControlName
-        End Get
-    End Property
+    
 
 End Class

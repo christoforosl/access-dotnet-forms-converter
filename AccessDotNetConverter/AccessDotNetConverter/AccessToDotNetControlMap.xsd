@@ -8,21 +8,7 @@
             <xs:sequence>
               <xs:element maxOccurs="unbounded" name="controlmap">
                 <xs:complexType>
-                  <xs:sequence minOccurs="0">
-                    <xs:element name="rootControl" type="xs:string" default="Me">
-
-                      <xs:annotation>
-                        <xs:documentation>
-                          Usually this will be the String "Me."  This value is used by the conversion system
-                          at runtime to generated the code that adds the generated controls to the form container.
-                          Useful when you specify a custom form as your base form, and that form has a panel control 
-                          which should receive all controls 
-                        </xs:documentation>
-                      </xs:annotation>
-                                       
-                    </xs:element>
-                    
-                  </xs:sequence>
+                  
                   <xs:attribute name="accessType" type="xs:string" use="required" />
                   <xs:attribute name="dotnetType" type="xs:string" use="required" />
                   <xs:attribute name="handler" type="xs:string" use="required">
@@ -43,6 +29,18 @@
                       </xs:documentation>
                     </xs:annotation>
                   </xs:attribute>
+
+                  <xs:attribute name="rootControl" type="xs:string" default="Me" use="optional">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Usually this will be the String "Me."  This value is used by the conversion system
+                        at runtime to generated the code that adds the generated controls to the form container.
+                        Useful when you specify a custom form as your base form, and that form has a panel control
+                        which should receive all controls
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
