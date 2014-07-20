@@ -52,44 +52,25 @@ Public Class AccessToDotNetControl
     ''' </summary>
     Private _dotNetType As String
 
+    Private _IAccessToDotNetControlCodeGenerator As IAccessToDotNetControlCodeConverter
+
+    Public Property accessToDotNetControlCodeGenerator As IAccessToDotNetControlCodeConverter
+        Get
+            If (_IAccessToDotNetControlCodeGenerator Is Nothing) Then
+                _IAccessToDotNetControlCodeGenerator = New AccessToDotNetControlCodeConverter
+            End If
+            Return _IAccessToDotNetControlCodeGenerator
+        End Get
+
+        Set(value As IAccessToDotNetControlCodeConverter)
+            _IAccessToDotNetControlCodeGenerator = value
+        End Set
+    End Property
+
     Public Sub convertCode()
 
-        Console.WriteLine("Control {0} now processing", Me.accessControl.name)
-        Me.controlDeclarationCode.Append(Me.getControlDeclarationCode)
-        Me.controlLayoutCode.Append(Me.getControlLayoutCode)
-        Me.controlAddCode.Append(Me.getControlAddToContainerCode)
-        Me.controlInstantiationCode.Append(Me.getControlInstantiationCode)
+        Me.accessToDotNetControlCodeGenerator.convertCode(Me)
 
-        If Not Me.isContainer Then Exit Sub
-
-        Dim controlsCollection As Object = Me.getChildControls
-        Console.WriteLine("Child Controls of {0} now processing", Me.accessControl.name)
-
-        'currentControl is a reference to an Access Control
-        For Each currentControl As Object In controlsCollection
-            Dim adc As AccessToDotNetControl = AccessControlFactory.getAccessToDotNetControl(currentControl)
-            If adc Is Nothing Then
-                Console.WriteLine("Control name ""{0}"" of type ""{1}"" not handled", _
-                                currentControl.name, _
-                                currentControl.controltype)
-            Else
-
-                If AccessConversionContext.current.processedControls.Contains(currentControl.name) Then
-                    'access returns the control collection both in a flat and hierchical way
-                    Console.WriteLine("Control {0} of type {1} altready processed", currentControl.Name, currentControl.ControlType)
-                Else
-                    adc.ParentControl = Me
-                    Call adc.convertCode()
-                    Me.controlDeclarationCode.Append(adc.controlDeclarationCode)
-                    Me.controlLayoutCode.Append(adc.controlLayoutCode)
-                    Me.controlAddCode.Append(adc.controlAddCode)
-                    Me.controlInstantiationCode.Append(adc.controlInstantiationCode)
-
-                    AccessConversionContext.current.processedControls.Add(currentControl.name)
-
-                End If
-            End If
-        Next
     End Sub
 
     Public Overridable ReadOnly Property getChildControls As Object
@@ -376,3 +357,4 @@ Public Class AccessToDotNetControl
 
 
 End Class
+

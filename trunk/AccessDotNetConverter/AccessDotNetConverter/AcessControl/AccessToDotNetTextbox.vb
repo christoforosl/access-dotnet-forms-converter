@@ -46,7 +46,7 @@ Public Class AccessToDotNetTextbox
             If Me.accessControl.format = "Short Date" OrElse Me.accessControl.format = "Long Date" Then
                 Return "DateTimePicker"
             Else
-                Return STR_TEXTBOX
+                Return IIf(String.IsNullOrEmpty(MyBase.dotNetType), "Textbox", MyBase.dotNetType)
             End If
         End Get
     End Property
