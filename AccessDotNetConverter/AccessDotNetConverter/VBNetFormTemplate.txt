@@ -28,7 +28,8 @@ Partial Class <__form_name__>
         Me.SuspendLayout()
 		
 		Me.ErrProvider = New System.Windows.Forms.ErrorProvider()
- 
+		Me.BackColor = System.Drawing.Color.White
+
 	   'do tab pages here
         <__CONTROL__LAYOUT__>
        
