@@ -4,7 +4,7 @@ Public Class AccessToDotNetLabel
 
     Public Overrides ReadOnly Property dotNetType() As String
         Get
-            Return "Label"
+            Return IIf(String.IsNullOrEmpty(MyBase.dotNetType), "Label", MyBase.dotNetType)
         End Get
 
     End Property
