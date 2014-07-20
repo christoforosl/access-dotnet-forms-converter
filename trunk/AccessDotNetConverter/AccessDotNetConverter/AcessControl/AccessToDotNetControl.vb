@@ -1,6 +1,7 @@
 ﻿Imports AccessDotNetConverter.My
 Imports System.Text
 Imports Microsoft.VisualBasic.Compatibility
+Imports System.Text.RegularExpressions
 
 Public Class AccessToDotNetControl
 
@@ -98,6 +99,8 @@ Public Class AccessToDotNetControl
         End Get
     End Property
 
+    Private _dotnetParentControlName As String
+
     ''' <summary>
     ''' Strign Property used to prefix controls addition.
     ''' For example, for control "EmployeeTypeID", on Form then we 
@@ -110,7 +113,48 @@ Public Class AccessToDotNetControl
     ''' </summary>
     Public Overridable ReadOnly Property dotnetParentControlName As String
         Get
-            Return Me.ParentControl.dotNetInstanceName
+
+            If _dotnetParentControlName Is Nothing Then
+                If TypeOf Me.ParentControl Is AccessToDotNetForm Then
+                    Dim x As XDocument = AccessConversionContext.current.Config
+                    Dim configElement As XElement = x.Element("AccessToDotNetConfig").Element("controlmaps")
+
+                    For Each elmnt As XElement In configElement.Elements
+                        If [Enum].Parse(acControlType.GetType, elmnt.Attribute("accessType")) = acControlType.acForm Then
+                            
+                            If elmnt.Attribute("nameMatch") IsNot Nothing AndAlso _
+                                        (Not String.IsNullOrEmpty(elmnt.Attribute("nameMatch").Value)) Then
+                                Dim regex As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex(elmnt.Attribute("nameMatch").Value)
+                                If regex.IsMatch(accessControl.name) Then
+                                    If elmnt.Attribute("rootControl") IsNot Nothing Then
+                                        _dotnetParentControlName = elmnt.Attribute("rootControl").Value
+                                        Exit For
+                                    End If
+                                End If
+                            Else
+                                If elmnt.Attribute("rootControl") IsNot Nothing Then
+                                    _dotnetParentControlName = elmnt.Attribute("rootControl").Value
+                                    Exit For
+                                End If
+                            End If
+                        End If
+                    Next
+
+                    If _dotnetParentControlName Is Nothing Then
+                        _dotnetParentControlName = "Me"
+                    End If
+
+                    If _dotnetParentControlName.EndsWith(".") Then
+                        _dotnetParentControlName.Substring(0, _dotnetParentControlName.Length - 1)
+                    End If
+
+                End If
+            Else
+                _dotnetParentControlName = Me.ParentControl.dotNetInstanceName
+            End If
+
+            Return _dotnetParentControlName
+
         End Get
     End Property
 
@@ -285,7 +329,10 @@ Public Class AccessToDotNetControl
         If Me.acControlType = AccessDotNetConverter.AcControlType.acForm Then
             Return String.Empty
         End If
-        Return vbCrLf & Me.ParentControl.dotNetInstanceName & ".controls.add(me." & Me.dotNetInstanceName & ")"
+
+        Return vbCrLf & Me.dotnetParentControlName & _
+                ".controls.add(me." & Me.dotNetInstanceName & ")"
+
     End Function
 
     Public Overridable ReadOnly Property dotNetType() As String
@@ -354,6 +401,7 @@ Public Class AccessToDotNetControl
 
         Return TwipsToPixelsX(accessControl.Height)
     End Function
+
 
 
 End Class
