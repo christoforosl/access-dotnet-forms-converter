@@ -44,7 +44,7 @@ Public Class AccessToDotNetForm
 
     Function getDotNetDesignerCode() As String
 
-        Me.generateCode()
+        Me.convertCode()
 
         Dim formCode As String = Me.templateCode
         Dim formName As String = AccessConversionContext.current.ControlsNameHandler.getDotNetname(Me.Name)

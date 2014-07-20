@@ -52,7 +52,7 @@ Public Class AccessToDotNetControl
     ''' </summary>
     Private _dotNetType As String
 
-    Public Sub generateCode()
+    Public Sub convertCode()
 
         Console.WriteLine("Control {0} now processing", Me.accessControl.name)
         Me.controlDeclarationCode.Append(Me.getControlDeclarationCode)
@@ -79,7 +79,7 @@ Public Class AccessToDotNetControl
                     Console.WriteLine("Control {0} of type {1} altready processed", currentControl.Name, currentControl.ControlType)
                 Else
                     adc.ParentControl = Me
-                    Call adc.generateCode()
+                    Call adc.convertCode()
                     Me.controlDeclarationCode.Append(adc.controlDeclarationCode)
                     Me.controlLayoutCode.Append(adc.controlLayoutCode)
                     Me.controlAddCode.Append(adc.controlAddCode)
