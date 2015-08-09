@@ -9,23 +9,23 @@ Public Class AccessToDotNetTextbox
         Dim thisCtrl As String = MyBase.getControlLayoutCode()
 
         If Me.accessControl.BackStyle = 0 Then
-            thisCtrl = thisCtrl & vbCrLf & "me." & dotNetInstanceName & ".backcolor =me.backcolor"
+            thisCtrl = thisCtrl & vbCrLf & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".backcolor =" & AccessConversionContext.current.thisOrMe & ".backcolor" & AccessConversionContext.current.LineEnding
         End If
         If Me.dotNetType = STR_TEXTBOX Then
             If Me.accessControl.Scrollbars = 2 Then
-                thisCtrl = thisCtrl & vbCrLf & "me." & dotNetInstanceName & ".Multiline = True"
+                thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".Multiline = true" & AccessConversionContext.current.LineEnding
             End If
 
             If Me.accessControl.Locked Then
-                thisCtrl = thisCtrl & vbCrLf & "me." & dotNetInstanceName & ".ReadOnly = True"
+                thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".ReadOnly = true" & AccessConversionContext.current.LineEnding
             End If
 
             If Me.accessControl.SpecialEffect = 0 Then
-                thisCtrl = thisCtrl & vbCrLf & "me." & dotNetInstanceName & ".BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle"
+                thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle" & AccessConversionContext.current.LineEnding
             End If
 
 
-            thisCtrl = thisCtrl & vbCrLf & "Me." & dotNetInstanceName & ".TextAlign="
+            thisCtrl = thisCtrl & vbCrLf & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".TextAlign="
             If Me.accessControl.textalign = 2 Then 'center
                 thisCtrl = thisCtrl & "HorizontalAlignment.center"
             ElseIf Me.accessControl.textalign = 3 Then 'right
@@ -33,7 +33,7 @@ Public Class AccessToDotNetTextbox
             Else
                 thisCtrl = thisCtrl & "HorizontalAlignment.Left"
             End If
-            thisCtrl = thisCtrl & vbCrLf
+            thisCtrl = thisCtrl & AccessConversionContext.current.LineEnding
 
         End If
 

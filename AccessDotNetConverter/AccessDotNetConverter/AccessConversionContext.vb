@@ -11,6 +11,8 @@ Imports System.Runtime.InteropServices
 ''' </summary>
 Public Class AccessConversionContext
 
+
+
     Public Const DEFAULT_CONFIG_FILE As String = "defaultProjectConfig.xml"
 
     ''' <summary>
@@ -44,6 +46,35 @@ Public Class AccessConversionContext
     Private _accessApplication As Object 'Access.Application
 
     Private _dotNetProjectPath As String 'Access.Application
+
+    Function isCSharp() As Boolean
+        Return Me.convertedFilesExtension = "cs"
+    End Function
+
+
+    Public ReadOnly Property thisOrMeDot As String
+        Get
+            If isCSharp() Then Return "this."
+            Return "Me."
+        End Get
+    End Property
+
+    Public ReadOnly Property thisOrMe As String
+        Get
+            If isCSharp() Then Return "this"
+            Return "Me"
+        End Get
+    End Property
+
+    Function LineEnding() As String
+        If isCSharp() Then
+            Return ";" & vbCrLf
+
+        Else
+            Return vbCrLf
+        End If
+    End Function
+
 
     ''' <summary>
     ''' Gets/Sets The root .Net project path to write the produced form files
@@ -146,6 +177,7 @@ Public Class AccessConversionContext
 
 
         Me.convertedFilesExtension = elmnt.Attribute("fileExtension").Value()
+
         Me.defaultBaseForm = elmnt.Attribute("defaultBaseForm").Value()
 
         Dim namingHandlerClass As String = elmnt.Attribute("namingHandler").Value()
@@ -362,6 +394,7 @@ Public Class AccessConversionContext
         End Get
     End Property
 
-   
+
+
 
 End Class

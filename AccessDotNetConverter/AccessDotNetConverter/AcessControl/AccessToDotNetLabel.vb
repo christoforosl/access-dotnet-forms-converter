@@ -12,26 +12,29 @@ Public Class AccessToDotNetLabel
     Public Overrides Function getControlLayoutCode() As String
 
         Dim thisCtrl = MyBase.getControlLayoutCode()
-        thisCtrl = thisCtrl & vbCrLf & "Me." & dotNetInstanceName & ".TextAlign="
+        thisCtrl = thisCtrl & vbCrLf & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".TextAlign="
 
         If Me.accessControl.textalign = 2 Then 'center
-            thisCtrl = thisCtrl & "System.Drawing.ContentAlignment.Middlecenter"
+            thisCtrl = thisCtrl & "System.Drawing.ContentAlignment.MiddleCenter"
         ElseIf Me.accessControl.textalign = 3 Then 'right
             thisCtrl = thisCtrl & "System.Drawing.ContentAlignment.MiddleRight"
         Else
             thisCtrl = thisCtrl & "System.Drawing.ContentAlignment.MiddleLeft"
         End If
+        thisCtrl = thisCtrl & AccessConversionContext.current.LineEnding
 
-        thisCtrl = thisCtrl & vbCrLf & "Me." & dotNetInstanceName & ".Text = " & exNetText(Me.accessControl.Caption) & vbCrLf
+        thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & _
+                dotNetInstanceName & ".Text = " & exNetText(Me.accessControl.Caption) & AccessConversionContext.current.LineEnding
+
         If Me.accessControl.ForeColor <> 0 Then
-            thisCtrl = thisCtrl & vbCrLf & "Me." & dotNetInstanceName & _
-                    ".forecolor = System.Drawing.ColorTranslator.FromOle(" & Me.accessControl.ForeColor & ")"
+            thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & dotNetInstanceName & _
+                    ".ForeColor = System.Drawing.ColorTranslator.FromOle(" & Me.accessControl.ForeColor & ")" & AccessConversionContext.current.LineEnding
         End If
 
 
         If Me.accessControl.BackStyle <> 0 Then
-            thisCtrl = thisCtrl & vbCrLf & "Me." & dotNetInstanceName & _
-                ".backcolor = System.Drawing.ColorTranslator.FromOle(" & Me.accessControl.BackColor & ")"
+            thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & dotNetInstanceName & _
+                ".BackColor = System.Drawing.ColorTranslator.FromOle(" & Me.accessControl.BackColor & ")" & AccessConversionContext.current.LineEnding
         End If
 
         thisCtrl = thisCtrl & vbCrLf

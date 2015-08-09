@@ -225,14 +225,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSharpNetFormTemplate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="exportPicture.bas.txt" />
+    <Content Include="VBNetFormTemplate.txt" />
     <None Include="defaultProjectConfig.xml">
       <SubType>Designer</SubType>
     </None>
     <Content Include="COPYING.txt" />
-    <Content Include="VBNetFormTemplate.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

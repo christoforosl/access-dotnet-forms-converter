@@ -14,7 +14,7 @@ Public Class AccessToDotNetTab
     Public Overrides Function getControlInstantiationCode() As String
 
         Return MyBase.getControlInstantiationCode() & _
-            vbCrLf & "Me." & dotNetInstanceName & ".SuspendLayout()" & vbCrLf
+            vbCrLf & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".SuspendLayout()" & AccessConversionContext.current.LineEnding
 
     End Function
 

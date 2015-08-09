@@ -87,8 +87,12 @@ Public Class AccessToDotNetForm
 
     Function getDotNetClassCode() As String
 
-        Return "Public Class " & Me.dotNetName & vbCrLf & _
-            "End Class"
+        If AccessConversionContext.current.isCSharp Then
+            Return "public partial class " & Me.dotNetName & "{" & vbCrLf & "}"
+        Else
+            Return "public Class " & Me.dotNetName & vbCrLf & _
+                "End Class"
+        End If
 
     End Function
 

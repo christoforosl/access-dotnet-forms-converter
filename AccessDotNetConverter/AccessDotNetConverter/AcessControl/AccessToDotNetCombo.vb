@@ -7,10 +7,10 @@ Public Class AccessToDotNetCombo
         'Dim cbpo As Access.ComboBox = CType(Me.accessControl, Access.ComboBox)
 
         Return MyBase.getControlLayoutCode() & _
-            vbCrLf & "me." & dotNetInstanceName & ".RowSourceType = """ & Me.accessControl.RowSourceType & """" & _
-            vbCrLf & "me." & dotNetInstanceName & ".RowSource = """ & _
+            AccessConversionContext.current.LineEnding & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".RowSourceType = """ & Me.accessControl.RowSourceType & """" & _
+            AccessConversionContext.current.LineEnding & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".RowSource = """ & _
                 Replace(Me.accessControl.RowSource, """", "'") & _
-                """" & vbCrLf
+                """" & AccessConversionContext.current.LineEnding
 
     End Function
 
@@ -24,10 +24,10 @@ Public Class AccessToDotNetListbox
         ' Dim cbpo As Access.ListBox = CType(Me.accessControl, Access.ListBox)
 
         Return MyBase.getControlLayoutCode() & _
-            vbCrLf & "me." & dotNetInstanceName & ".RowSourceType = """ & Me.accessControl.RowSourceType & """" & _
-            vbCrLf & "me." & dotNetInstanceName & ".RowSource = """ & _
+            AccessConversionContext.current.LineEnding & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".RowSourceType = """ & Me.accessControl.RowSourceType & """" & _
+            AccessConversionContext.current.LineEnding & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".RowSource = """ & _
                 Replace(Me.accessControl.RowSource, """", "'") & _
-                """" & vbCrLf
+                """" & AccessConversionContext.current.LineEnding
 
     End Function
 

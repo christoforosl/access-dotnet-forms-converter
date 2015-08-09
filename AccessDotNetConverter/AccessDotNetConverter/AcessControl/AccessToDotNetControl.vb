@@ -5,7 +5,7 @@ Imports System.Text.RegularExpressions
 
 Public Class AccessToDotNetControl
 
-    Public Const ME_DOT As String = "Me."
+
 
     ''' <summary>
     ''' The parent control of the current control.
@@ -141,7 +141,7 @@ Public Class AccessToDotNetControl
                     Next
 
                     If _dotnetParentControlName Is Nothing Then
-                        _dotnetParentControlName = "Me"
+                        _dotnetParentControlName = AccessConversionContext.current.thisOrMe
                     End If
 
                     If _dotnetParentControlName.EndsWith(".") Then
@@ -170,7 +170,7 @@ Public Class AccessToDotNetControl
         Get
 
             If Me.ParentControl Is Nothing Then
-                Return "Me"
+                Return AccessConversionContext.current.thisOrMe
             Else
                 If _dotNetInstanceName Is Nothing Then
                     _dotNetInstanceName = AccessConversionContext.current.ControlsNameHandler.getDotNetname(Me.Name)
@@ -242,35 +242,36 @@ Public Class AccessToDotNetControl
 
     Public Overridable Function getControlLayoutCode() As String
 
-        Dim ctlCode As StringBuilder = New StringBuilder(vbCrLf).Append(ME_DOT). _
-                            Append(Me.dotNetInstanceName).Append(".Name = """).Append(Me.dotNetInstanceName).Append("""")
-        ctlCode.Append(vbCrLf).Append(ME_DOT).Append(Me.dotNetInstanceName). _
-                Append(".Location = New System.Drawing.Point(").Append(TwipsToPixelsX(accessControl.left)). _
-                Append(", ").Append(GetControlTop() & ")")
+        Dim ctlCode As StringBuilder = New StringBuilder(vbCrLf).Append(AccessConversionContext.current.thisOrMeDot). _
+                            Append(Me.dotNetInstanceName).Append(".Name = """).Append(Me.dotNetInstanceName).Append("""").Append(AccessConversionContext.current.LineEnding)
 
-        ctlCode.Append(vbCrLf).Append(ME_DOT).Append(Me.dotNetInstanceName). _
-                Append(".Size = New System.Drawing.Size(").Append(Me.dotNetControlWidth).Append(", "). _
-                Append(Me.dotNetControlHeight).Append(")")
+        ctlCode.Append(AccessConversionContext.current.thisOrMeDot).Append(Me.dotNetInstanceName). _
+                Append(".Location = new System.Drawing.Point(").Append(TwipsToPixelsX(accessControl.left)). _
+                Append(", ").Append(GetControlTop() & ")").Append(AccessConversionContext.current.LineEnding)
 
-        ctlCode.Append(vbCrLf).Append(ME_DOT).Append(Me.dotNetInstanceName). _
-                Append(".Visible=").Append(accessControl.visible)
+        ctlCode.Append(AccessConversionContext.current.thisOrMeDot).Append(Me.dotNetInstanceName). _
+                Append(".Size = new System.Drawing.Size(").Append(Me.dotNetControlWidth).Append(", "). _
+                Append(Me.dotNetControlHeight).Append(")").Append(AccessConversionContext.current.LineEnding)
+
+        ctlCode.Append(AccessConversionContext.current.thisOrMeDot).Append(Me.dotNetInstanceName). _
+                Append(".Visible=").Append(accessControl.visible.ToString.ToLower).Append(AccessConversionContext.current.LineEnding)
 
         If hasTabIndex() Then
-            ctlCode.Append(vbCrLf).Append("me.").Append(Me.dotNetInstanceName). _
-                Append(".TabIndex = ").Append(Me.accessControl.TabIndex)
+            ctlCode.Append(AccessConversionContext.current.thisOrMeDot).Append(Me.dotNetInstanceName). _
+                Append(".TabIndex = ").Append(Me.accessControl.TabIndex).Append(AccessConversionContext.current.LineEnding)
         End If
 
-        If hasFont() Then
+        'If hasFont() Then
 
-            Dim sFont As String = "Regular"
+        '    Dim sFont As String = "Regular"
 
-            If Me.accessControl.FontBold = 1 Then
-                sFont = "Bold"
-            End If
-            ctlCode.Append(vbCrLf).Append("me." & dotNetInstanceName).Append(".Font = New System.Drawing.Font(""").Append( _
-                        Me.accessControl.FontName).Append(""", ").Append(Me.accessControl.FontSize & "!, System.Drawing.FontStyle.").Append( _
-                        sFont).Append(", System.Drawing.GraphicsUnit.Point, CType(161, Byte))")
-        End If
+        '    If Me.accessControl.FontBold = 1 Then
+        '        sFont = "Bold"
+        '    End If
+        '    ctlCode.Append(vbCrLf).Append(AccessConversionContext.current.thisOrMe).Append(".").Append(dotNetInstanceName).Append(".Font = New System.Drawing.Font(""").Append( _
+        '                Me.accessControl.FontName).Append(""", ").Append(Me.accessControl.FontSize & "!, System.Drawing.FontStyle.").Append( _
+        '                sFont).Append(", System.Drawing.GraphicsUnit.Point, CType(161, Byte))")
+        'End If
 
         Return ctlCode.ToString
 
@@ -279,29 +280,42 @@ Public Class AccessToDotNetControl
     ''' <summary>
     ''' Returns the access label associated with this control
     ''' </summary>
-    Public Function getControlLabel() As Object 'aclabel
+	Public Function getControlLabel() As Object	'aclabel
 
-        If Me.acControlType = AccessDotNetConverter.AcControlType.acForm Then Return Nothing
+		If Me.acControlType = AccessDotNetConverter.AcControlType.acForm Then Return Nothing
 
-        Dim child As Object
+		Dim child As Object
 
-        For i As Integer = 0 To Me.accessControl.Controls.Count
-            child = Me.accessControl.Controls.Item(i)
-            If child.ControlType = acControlType.acLabel Then
-                Return child
-            End If
-        Next
-        Return Nothing
+		Try
 
-    End Function
+			Dim childCount As Object = Me.accessControl.Controls.Count
+			If (childCount = 0) Then Return Nothing
+
+			For i As Integer = 0 To childCount
+				child = Me.accessControl.Controls.Item(i)
+				If child.ControlType = acControlType.acLabel Then
+					Return child
+				End If
+
+			Next
+		Catch ex As Exception
+			' just ignore errors that ms acess gives if control count is 0
+		End Try
+		
+		Return Nothing
+
+	End Function
 
     Public Overridable Function getControlDeclarationCode() As String
 
         If Me.acControlType = AccessDotNetConverter.AcControlType.acForm Then
             Return String.Empty
         End If
-
-        Return String.Format("Friend WithEvents {0} As {1}", dotNetInstanceName, Me.dotNetType) & vbCrLf
+        If Not AccessConversionContext.current.isCSharp Then
+            Return String.Format("Friend WithEvents {0} As {1}", dotNetInstanceName, Me.dotNetType) & AccessConversionContext.current.LineEnding
+        Else
+            Return String.Format("internal {1} {0}", dotNetInstanceName, Me.dotNetType) & AccessConversionContext.current.LineEnding
+        End If
 
     End Function
 
@@ -311,7 +325,7 @@ Public Class AccessToDotNetControl
             Return String.Empty
         End If
 
-        Return ME_DOT & Me.dotNetInstanceName & " = New " & Me.dotNetType & vbCrLf
+        Return AccessConversionContext.current.thisOrMeDot & Me.dotNetInstanceName & " = new " & Me.dotNetType & "()" & AccessConversionContext.current.LineEnding
 
     End Function
 
@@ -330,8 +344,8 @@ Public Class AccessToDotNetControl
             Return String.Empty
         End If
 
-        Return vbCrLf & Me.dotnetParentControlName & _
-                ".controls.add(me." & Me.dotNetInstanceName & ")"
+        Return Me.dotnetParentControlName & _
+                ".Controls.Add(" & AccessConversionContext.current.thisOrMeDot & Me.dotNetInstanceName & ")" & AccessConversionContext.current.LineEnding
 
     End Function
 

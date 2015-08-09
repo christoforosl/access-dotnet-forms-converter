@@ -11,7 +11,7 @@ Public Class AccessToDotNetTabPage
     Public Overrides Function getControlLayoutCode() As String
 
         Return MyBase.getControlLayoutCode() & _
-            vbCrLf & "Me." & dotNetInstanceName & ".Text = """ & Me.accessControl.Caption & """" & vbCrLf
+            vbCrLf & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".Text = """ & Me.accessControl.Caption & """" & vbCrLf
 
     End Function
 

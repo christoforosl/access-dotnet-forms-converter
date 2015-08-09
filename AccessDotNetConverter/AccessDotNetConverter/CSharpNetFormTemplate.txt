@@ -1,0 +1,63 @@
+﻿using org.codegen.win.controls;
+
+//
+// Form converted from MSAccess database using AccessDotNetConverter on <__DATETIME__>
+// https://code.google.com/p/msaccess-subversion-control
+// 
+public partial class <__form_name__> : <__INHERITS__> {
+
+   	//Form overrides dispose to clean up the component list.
+	[System.Diagnostics.DebuggerNonUserCode()]
+	protected override void Dispose(bool disposing) {
+		if (disposing && components != null) {
+			components.Dispose();
+		}
+		base.Dispose(disposing);
+	}
+
+	//Required by the Windows Form Designer
+
+	private System.ComponentModel.IContainer components;
+	//NOTE: The following procedure is required by the Windows Form Designer
+	//It can be modified using the Windows Form Designer.  
+	//Do not modify it using the code editor.
+	[System.Diagnostics.DebuggerStepThrough()]
+	private void InitializeComponent() {
+		
+		 <__CONTROL__CREATE__>
+        this.SuspendLayout();
+		
+		this.ErrProvider = new System.Windows.Forms.ErrorProvider();
+		this.BackColor = System.Drawing.Color.White;
+
+	    //do tab pages here
+        <__CONTROL__LAYOUT__>
+       
+		
+		this.ErrProvider.ContainerControl = this;
+       // this.AutoScaleDimensions = new System.Drawing.SizeF(6.0!, 13.0!);
+        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        
+        <__ADD_CONTROLS__>
+        
+        this.Name = "<__form_name__>";
+        this.Text = "<__form_caption__>";
+		this.ClientSize = new System.Drawing.Size(<__w__>, <__h__>);
+		this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+		this.MaximizeBox = false;
+		this.MinimizeBox = false;
+		((System.ComponentModel.ISupportInitialize)this.ErrProvider).EndInit();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+	
+	}
+
+    <__CONTROL__DECL__>
+
+    internal System.Windows.Forms.ErrorProvider ErrProvider;
+
+	public <__form_name__>() {
+		InitializeComponent();
+	}
+
+}

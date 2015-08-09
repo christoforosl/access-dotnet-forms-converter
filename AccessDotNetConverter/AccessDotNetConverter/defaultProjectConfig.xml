@@ -13,7 +13,7 @@ The root element "AccessToDotNetConfig" specifies the following:
 
 -->
 <AccessToDotNetConfig
-	  fileExtension="vb"
+	  fileExtension="cs"
     sourceAccessDatabase=".\testdatabase.mdb"
     defaultBaseForm="System.Windows.Forms.Form"
     namingHandler="AccessDotNetConverter.DefaultNameHandler"

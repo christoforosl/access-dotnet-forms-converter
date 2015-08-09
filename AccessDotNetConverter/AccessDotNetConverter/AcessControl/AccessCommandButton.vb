@@ -14,11 +14,13 @@ Public Class AccessToDotNetCommandButton
 
         Dim thisCtrl = MyBase.getControlLayoutCode()
 
-        thisCtrl = thisCtrl & vbCrLf & "Me." & dotNetInstanceName & ".Text = " & exNetText(Me.accessControl.Caption)
+        thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & dotNetInstanceName & ".Text = " & _
+                exNetText(Me.accessControl.Caption) & AccessConversionContext.current.LineEnding
+
         If Me.accessControl.ForeColor <> 0 Then
-            thisCtrl = thisCtrl & vbCrLf & "Me." & _
+            thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & "." & _
                 dotNetInstanceName & ".forecolor = System.Drawing.ColorTranslator.FromOle(" & _
-                Me.accessControl.ForeColor & ")"
+                Me.accessControl.ForeColor & ")" & AccessConversionContext.current.LineEnding
         End If
 
         Return thisCtrl

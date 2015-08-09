@@ -12,7 +12,7 @@ The root element "AccessToDotNetConfig" specifies the following:
 5. targetDotNetProjectPath : The root path to place converted files
 
 -->
-<AccessToDotNetConfig fileExtension="vb" sourceAccessDatabase="C:\VSProjects\PayrollFormsConversion\IntermediaryDatabase.mdb" defaultBaseForm="System.Windows.Forms.Form" namingHandler="AccessDotNetConverter.DefaultNameHandler" defaultBaseFormTemplate=".\VBNetFormTemplate.txt" targetDotNetProjectPath="C:\VSProjects\PayrollFormsConversion\convertedForms">
+<AccessToDotNetConfig fileExtension="cs" sourceAccessDatabase="C:\VSProjects\PayrollFormsConversion\IntermediaryDatabase.mdb" defaultBaseForm="System.Windows.Forms.Form" namingHandler="AccessDotNetConverter.DefaultNameHandler" defaultBaseFormTemplate=".\VBNetFormTemplate.txt" targetDotNetProjectPath="C:\VSProjects\PayrollFormsConversion\convertedForms">
   <controlmaps>
     <!-- The rule below tells the system that by default all Forms will inherit "System.Windows.Forms.Form" and 
     the handler will be the class AccessDotNetConverter.AccessToDotNetForm 
