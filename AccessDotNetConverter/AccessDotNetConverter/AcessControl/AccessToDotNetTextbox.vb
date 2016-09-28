@@ -9,7 +9,7 @@ Public Class AccessToDotNetTextbox
         Dim thisCtrl As String = MyBase.getControlLayoutCode()
 
         If Me.accessControl.BackStyle = 0 Then
-            thisCtrl = thisCtrl & vbCrLf & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".backcolor =" & AccessConversionContext.current.thisOrMe & ".backcolor" & AccessConversionContext.current.LineEnding
+			thisCtrl = thisCtrl & vbCrLf & AccessConversionContext.current.thisOrMe & "." & dotNetInstanceName & ".BackColor =" & AccessConversionContext.current.thisOrMe & ".BackColor" & AccessConversionContext.current.LineEnding
         End If
         If Me.dotNetType = STR_TEXTBOX Then
             If Me.accessControl.Scrollbars = 2 Then

@@ -23,8 +23,9 @@ Public Class AccessToDotNetLabel
         End If
         thisCtrl = thisCtrl & AccessConversionContext.current.LineEnding
 
-        thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & _
-                dotNetInstanceName & ".Text = " & exNetText(Me.accessControl.Caption) & AccessConversionContext.current.LineEnding
+		thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & _
+				dotNetInstanceName & ".Text = " & exNetText(Me.accessControl.Caption) & _
+	  AccessConversionContext.current.LineEnding
 
         If Me.accessControl.ForeColor <> 0 Then
             thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & dotNetInstanceName & _

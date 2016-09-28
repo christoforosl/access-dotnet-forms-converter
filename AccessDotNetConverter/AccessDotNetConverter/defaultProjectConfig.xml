@@ -54,7 +54,7 @@ The root element "AccessToDotNetConfig" specifies the following:
     
     <controlmap accessType="acTabCtl" dotnetType="System.Windows.Forms.TabControl"  handler="AccessDotNetConverter.AccessToDotNetTab"/>
     <controlmap accessType="acPage" dotnetType="System.Windows.Forms.TabPage"  handler="AccessDotNetConverter.AccessToDotNetTabPage"/>
-    <controlmap accessType="acCheckBox" dotnetType="System.Windows.Forms.Checkbox" handler="AccessDotNetConverter.AccessToDotNetCheckbox" />
+    <controlmap accessType="acCheckBox" dotnetType="System.Windows.Forms.CheckBox" handler="AccessDotNetConverter.AccessToDotNetCheckbox" />
 
      <controlmap accessType="acImage"
 					dotnetType="System.Windows.Forms.PictureBox"

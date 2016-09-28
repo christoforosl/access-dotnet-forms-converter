@@ -18,9 +18,9 @@ Public Class AccessToDotNetCommandButton
                 exNetText(Me.accessControl.Caption) & AccessConversionContext.current.LineEnding
 
         If Me.accessControl.ForeColor <> 0 Then
-            thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & "." & _
-                dotNetInstanceName & ".forecolor = System.Drawing.ColorTranslator.FromOle(" & _
-                Me.accessControl.ForeColor & ")" & AccessConversionContext.current.LineEnding
+			thisCtrl = thisCtrl & AccessConversionContext.current.thisOrMeDot & "." & _
+			 Me.dotNetInstanceName & ".ForeColor = System.Drawing.ColorTranslator.FromOle(" & _
+			 Me.accessControl.ForeColor & ")" & AccessConversionContext.current.LineEnding
         End If
 
         Return thisCtrl

@@ -276,8 +276,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip
-"C:\Program Files\7-Zip\7z" a C:\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip $(TargetDir)\*.* -x!*vshost* -x!*.tmp  -x!*.pdb</PostBuildEvent>
+    <PostBuildEvent>del C:\users\chris\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip
+"C:\Program Files\7-Zip\7z" a C:\users\chris\VSProjects\AccessDotNetConverterWiki\AccessDotNetConverter.zip $(TargetDir)\*.* -x!*vshost* -x!*.tmp  -x!*.pdb</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
